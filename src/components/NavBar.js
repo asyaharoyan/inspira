@@ -2,10 +2,28 @@ import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 
 const NavBar = () => {
-    return <Navbar className={styles.NavBar} expand="md" fixed="top">
+  const currentUser = useCurrentUser();
+
+  const loggedInIcons = <>{currentUser?.username}</>
+  const loggedOutIcons = <>
+    <NavLink
+          className={styles.NavLink}
+          activeClassName={styles.Active}
+          exact to="/signin">
+            Sign In <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        </NavLink>
+        <NavLink
+          className={styles.NavLink}
+          activeClassName={styles.Active}
+          exact to="/signup">
+            Sign Up <i class="fa-solid fa-user-plus"></i>
+        </NavLink>
+  </>
+  return <Navbar className={styles.NavBar} expand="md" fixed="top">
     <Container>
     <NavLink to="/">
     <Navbar.Brand>Inspira Logo</Navbar.Brand>
@@ -25,18 +43,7 @@ const NavBar = () => {
           exact to="/">
             Home <i class="fa-solid fa-archway"></i>
         </NavLink>
-        <NavLink
-          className={styles.NavLink}
-          activeClassName={styles.Active}
-          exact to="/signin">
-            Sign In <i class="fa-solid fa-arrow-right-to-bracket"></i>
-        </NavLink>
-        <NavLink
-          className={styles.NavLink}
-          activeClassName={styles.Active}
-          exact to="/signup">
-            Sign Up <i class="fa-solid fa-user-plus"></i>
-        </NavLink>
+        {currentUser ? loggedInIcons : loggedOutIcons}
       </Nav>
     </Navbar.Collapse>
     </Container>
