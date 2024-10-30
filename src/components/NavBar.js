@@ -1,53 +1,110 @@
 import React from "react";
-import { Container, Navbar, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
+import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
-
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../contexts/CurrentUserContext";
+import Avatar from "./Avatar";
+import axios from "axios";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
 
-  const loggedInIcons = <>{currentUser?.username}</>
-  const loggedOutIcons = <>
+  const handleSignOut = async () => {
+    try {
+      await axios.post("dj-rest-auth/logout/");
+      setCurrentUser(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const addPostIcon = (
     <NavLink
-          className={styles.NavLink}
-          activeClassName={styles.Active}
-          exact to="/signin">
-            Sign In <i class="fa-solid fa-arrow-right-to-bracket"></i>
-        </NavLink>
-        <NavLink
-          className={styles.NavLink}
-          activeClassName={styles.Active}
-          exact to="/signup">
-            Sign Up <i class="fa-solid fa-user-plus"></i>
-        </NavLink>
-  </>
-  return <Navbar className={styles.NavBar} expand="md" fixed="top">
-    <Container>
-    <NavLink to="/">
-    <Navbar.Brand>Inspira Logo</Navbar.Brand>
+      className={styles.NavLink}
+      activeClassName={styles.Active}
+      to="/posts/create"
+    >
+      <i class="fa-solid fa-plus"></i>Create post
     </NavLink>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="ml-auto text-right">
+  );
+  const loggedInIcons = (
+    <>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        exact to="/post">
-        Post <i class="fa-solid fa-arrow-up-from-bracket"></i>
+        to="/feed"
+      >
+        <i class="fa-regular fa-newspaper"></i> News feed
       </NavLink>
-        <NavLink
-          className={styles.NavLink}
-          activeClassName={styles.Active}
-          exact to="/">
-            Home <i class="fa-solid fa-archway"></i>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/liked"
+      >
+        <i class="fa-regular fa-thumbs-up"></i>Liked
+      </NavLink>
+      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>Sign out
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        to={`/profiles/${currentUser?.profile_id}`}
+      >
+        <Avatar src={currentUser?.avatar} height={40} />
+      </NavLink>
+    </>
+  );
+  const loggedOutIcons = (
+    <>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/signin"
+      >
+        <i class="fa-solid fa-arrow-right-to-bracket"></i>Sign in
+      </NavLink>
+      <NavLink
+        to="/signup"
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i className="fas fa-user-plus"></i>Sign up
+      </NavLink>
+    </>
+  );
+
+  return (
+    <Navbar className={styles.NavBar} expand="md" fixed="top">
+      <Container>
+        <NavLink to="/">
+          <Navbar.Brand>
+            <img src={logo} alt="logo" height="45" />
+          </Navbar.Brand>
         </NavLink>
-        {currentUser ? loggedInIcons : loggedOutIcons}
-      </Nav>
-    </Navbar.Collapse>
-    </Container>
-  </Navbar>
+        {currentUser && addPostIcon}
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ml-auto text-left">
+            <NavLink
+              exact
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/"
+            >
+              <i className="fas fa-home"></i>Home
+            </NavLink>
+
+            {currentUser ? loggedInIcons : loggedOutIcons}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 };
 
 export default NavBar;
