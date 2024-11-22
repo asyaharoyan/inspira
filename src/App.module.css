@@ -9,10 +9,9 @@
   }
 
   .Content {
-    background-color: #ffffff;
+    background-color: #dcd4cb;
     padding: 10px;
-    border-radius: 2px;
-    border: 1px solid #dadadf;
+    border-radius: 1rem;
   }
   
   .FillerImage {
@@ -32,19 +31,19 @@
   }
   
   a {
-    color: #494949;
+    color: #4c4a47;
     transition: color ease-in-out 0.2s;
   }
   
   a:hover {
     text-decoration: none;
-    color: #494949;
+    color: #42413d;
     font-weight: 700;
     font-size: 1.1rem;
   }
   
   a:hover i {
-    color: #494949;
+    color: #42413d;
     transition: color ease-in-out 0.4s;
   }
 

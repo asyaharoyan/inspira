@@ -87,7 +87,7 @@ const NavBar = () => {
     className={styles.NavBar}
     expand="md" fixed="top">
       <Container>
-        <NavLink to="/">
+        <NavLink to="/" activeClassName={styles.Active}>
           <Navbar.Brand>
             <img src={logo} alt="logo" height="45" />
           </Navbar.Brand>

@@ -2,11 +2,11 @@
     height: calc(100vh - 81px);
   }
   .Input {
-    background: #ffffff;
-    border: 1px solid #f0f1f9;
+    background: #eeecea;
     box-sizing: border-box;
-    border-radius: 2px;
-    color: #7177a1;
+    border-radius: 1rem;
+    border: none;
+    color: #d1cfca;
     text-align: center;
     padding: 10px;
   }
@@ -19,7 +19,7 @@
     text-align: center;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #2142b2;
+    color: #3c3730;
   }
   
   .Link {
@@ -30,7 +30,8 @@
   }
   
   .Link span {
-    color: #ff9254;
+    color: #a6761d;
+    font-weight: 800;
   }
   
   .Container {
