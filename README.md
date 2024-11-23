@@ -68,15 +68,12 @@ Find API Repository here - [API repository](https://github.com/asyaharoyan/api-i
 
 ## User Stories
 
-- 
-
 ## Design Prototype
 
 The user interface and experience (UI/UX) design for Inspira was crafted using [Figma](https://www.figma.com/), ensuring a seamless and visually appealing design that enhances the user's journey throughout the site.
 
 To view the Figma project, you can visit it [here](https://www.figma.com/design/jsSjnZu2QlOO2bFqOYtyzt/INSPIRA?node-id=0-1&t=0X02r4BdYG0j5pP6-1),
 
-<br />
 
 ## Components
 
