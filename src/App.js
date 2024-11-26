@@ -7,6 +7,8 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import PostsPage from "./pages/posts/PostsPage";
 
+import ProfilePage from "./pages/profiles/ProfilePage";
+
 function App() {
 
   return (
@@ -16,8 +18,10 @@ function App() {
             <Switch>
               <Route exact path="/" render={() => (
                 <PostsPage message="No results found. Adjust the search keyword." />)} />
+              
               <Route exact path="/signin" render={() => <SignInForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
+              <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
               <Route render={() => <p>Page not found!</p>} />
             </Switch>
           </Container>

@@ -37,13 +37,13 @@ const NavBar = () => {
   );
   const loggedInIcons = (
     <>
-      <NavLink
+      {/* <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/feed"
       >
         <i class="fa-regular fa-newspaper"></i> News feed
-      </NavLink>
+      </NavLink> */}
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
