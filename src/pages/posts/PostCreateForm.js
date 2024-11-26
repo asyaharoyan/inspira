@@ -26,10 +26,14 @@ function PostCreateForm() {
 
   const [postData, setPostData] = useState({
     title: "",
+    style: "",
+    area_type: "",
+    location: "",
+    completion_date: "",
     content: "",
     image: "",
   });
-  const { title, content, image } = postData;
+  const { title, style, area_type, location, completion_date, content, image } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -56,6 +60,10 @@ function PostCreateForm() {
     const formData = new FormData();
 
     formData.append("title", title);
+    formData.append("content", style);
+    formData.append("content", area_type);
+    formData.append("content", location);
+    formData.append("content", completion_date);
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
 
@@ -88,6 +96,66 @@ function PostCreateForm() {
       ))}
 
       <Form.Group>
+        <Form.Label>Style</Form.Label>
+        <Form.Control
+          type="text"
+          name="syle"
+          value={style}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.style?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Area Type</Form.Label>
+        <Form.Control
+          type="text"
+          name="area_type"
+          value={area_type}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.area_type?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Location</Form.Label>
+        <Form.Control
+          type="text"
+          name="location"
+          value={location}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.location?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Completion Date</Form.Label>
+        <Form.Control
+          type="text"
+          name="completion_date"
+          value={completion_date}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.completion_date?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
         <Form.Label>Content</Form.Label>
         <Form.Control
           as="textarea"
@@ -104,13 +172,13 @@ function PostCreateForm() {
       ))}
 
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.Bright}`}
         onClick={() => history.goBack()}
       >
-        cancel
+        Cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+      <Button className={`${btnStyles.Button} ${btnStyles.Bright}`} type="submit">
+        Create
       </Button>
     </div>
   );
