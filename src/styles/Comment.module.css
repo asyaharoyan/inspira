@@ -1,10 +1,11 @@
 .Owner {
     font-weight: bold;
-    color: #2142b2;
+    text-transform: capitalize;
+    color: #3a2b1a;
     margin-right: 8px;
   }
   
   .Date {
     font-weight: lighter;
-    color: #c1c1c5;
+    color: #636363;
   }
