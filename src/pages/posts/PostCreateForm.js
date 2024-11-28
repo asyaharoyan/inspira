@@ -60,10 +60,10 @@ function PostCreateForm() {
     const formData = new FormData();
 
     formData.append("title", title);
-    formData.append("content", style);
-    formData.append("content", area_type);
-    formData.append("content", location);
-    formData.append("content", completion_date);
+    formData.append("style", style);
+    formData.append("area_type", area_type);
+    formData.append("location", location);
+    formData.append("completion_date", completion_date);
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
 
