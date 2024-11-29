@@ -23,6 +23,7 @@ import { useRedirect } from "../../hooks/useRedirect";
 function PostCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
+  const[formData, setFormData] = useState({});
 
   const [postData, setPostData] = useState({
     title: "",
@@ -53,6 +54,13 @@ function PostCreateForm() {
         image: URL.createObjectURL(event.target.files[0]),
       });
     }
+  };
+
+  const handleChangeDate = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const handleSubmit = async (event) => {
@@ -143,10 +151,10 @@ function PostCreateForm() {
       <Form.Group>
         <Form.Label>Completion Date</Form.Label>
         <Form.Control
-          type="text"
+          type="date"
           name="completion_date"
           value={completion_date}
-          onChange={handleChange}
+          onChange={handleChangeDate}
         />
       </Form.Group>
       {errors?.completion_date?.map((message, idx) => (

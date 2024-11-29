@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
@@ -13,17 +13,49 @@ const SignUpForm = () => {
         username: "",
         password1: "",
         password2: "",
+        profession: "",
       });
-    const { username, password1, password2 } = signUpData;
+    const { username, password1, password2, profession } = signUpData;
+    const [professions, setProfessions] = useState([]);
     const history = useHistory();
     const [errors, setErrors] = useState({});
 
-    const handleChange = (event) => {
-        setSignUpData({
-          ...signUpData,
-          [event.target.name]: event.target.value,
-        });
+    useEffect(() => {
+      const fetchProfessions = async () => {
+        try {
+          const { data } = await axios.get("/profiles/professions/");
+          setProfessions(data); // Assumes the API returns an array of professions
+        } catch (err) {
+          console.error("Error fetching professions:", err);
+        }
       };
+  
+      fetchProfessions();
+    }, []);
+
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+    
+      // Update the signUpData state
+      setSignUpData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    
+      // Handle validation for the profession field
+      if (name === "profession" && !professions.includes(value)) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          profession: ["Please select a valid profession."],
+        }));
+      } else if (name === "profession") {
+        // Clear profession errors if valid
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          profession: undefined,
+        }));
+      }
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -102,6 +134,29 @@ const SignUpForm = () => {
     {message}
   </Alert>
 )}
+
+<Form.Group as={Row} controlId="profession">
+              <Form.Label className="d-none">Profession</Form.Label>
+              <Form.Control
+                as="select" // Dropdown menu
+                className={styles.Input}
+                name="profession"
+                value={profession}
+                onChange={handleChange}
+              >
+                <option value="">Choose your profession</option>
+                {professions.map((prof, idx) => (
+                  <option key={idx} value={prof}>
+                    {prof}
+                  </option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+            {errors.profession?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
 
   <Button
   className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
