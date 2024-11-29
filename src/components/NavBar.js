@@ -37,13 +37,13 @@ const NavBar = () => {
   );
   const loggedInIcons = (
     <>
-      {/* <NavLink
+      <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/feed"
+        to="/info"
       >
-        <i class="fa-regular fa-newspaper"></i> News feed
-      </NavLink> */}
+        <i class="fa-regular fa-newspaper"></i> Info
+      </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
@@ -64,6 +64,14 @@ const NavBar = () => {
   );
   const loggedOutIcons = (
     <>
+    <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/info"
+      >
+        <i class="fa-regular fa-newspaper"></i> Info
+      </NavLink>
+      
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}

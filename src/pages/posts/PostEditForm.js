@@ -17,13 +17,18 @@ import { axiosReq } from "../../api/axiosDefaults";
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
+  const[formData, setFormData] = useState({});
 
   const [postData, setPostData] = useState({
     title: "",
+    style: "",
+    area_type: "",
+    location: "",
+    completion_date: "",
     content: "",
     image: "",
   });
-  const { title, content, image } = postData;
+  const { title, style, area_type, location, completion_date, content, image } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -33,9 +38,10 @@ function PostEditForm() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/posts/${id}/`);
-        const { title, content, image, is_owner } = data;
+        const { title, style, area_type, location, completion_date, content, image, is_owner } = data;
 
-        is_owner ? setPostData({ title, content, image }) : history.push("/");
+        is_owner ? setPostData({ 
+          title, style, area_type, location, completion_date, content, image }) : history.push("/");
       } catch (err) {
         // console.log(err);
       }
@@ -61,11 +67,22 @@ function PostEditForm() {
     }
   };
 
+  const handleChangeDate = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
 
     formData.append("title", title);
+    formData.append("style", style);
+    formData.append("area_type", area_type);
+    formData.append("location", location);
+    formData.append("completion_date", completion_date);
     formData.append("content", content);
 
     if (imageInput?.current?.files[0]) {
@@ -95,6 +112,66 @@ function PostEditForm() {
         />
       </Form.Group>
       {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+<Form.Group>
+        <Form.Label>Style</Form.Label>
+        <Form.Control
+          type="text"
+          name="syle"
+          value={style}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.style?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Area Type</Form.Label>
+        <Form.Control
+          type="text"
+          name="area_type"
+          value={area_type}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.area_type?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Location</Form.Label>
+        <Form.Control
+          type="text"
+          name="location"
+          value={location}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.location?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Completion Date</Form.Label>
+        <Form.Control
+          type="date"
+          name="completion_date"
+          value={completion_date}
+          onChange={handleChangeDate}
+        />
+      </Form.Group>
+      {errors?.completion_date?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>

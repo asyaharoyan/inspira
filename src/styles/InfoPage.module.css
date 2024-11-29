@@ -1,0 +1,24 @@
+.InfoPage {
+    padding: 20px;
+  }
+  
+.InfoPage h2 {
+    font-size: 1.6rem;
+    color: #636363;
+    font-weight: 800;
+  }
+  
+.InfoPage h3 {
+    font-size: 1.28rem;
+    color: #636363;
+    font-weight: 800;
+  }
+
+.InfoPage p, ul {
+    font-size: 1rem;
+    color: #636363;
+  }
+
+.InfoPage .card {
+    margin: 10px 0;
+  }
