@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import SigninPhoto from "../../assets/signin-photo.png";
 
 import { Form, Button, Image, Col, Row, Container, Alert, } from "react-bootstrap";
 import axios from "axios";
@@ -24,7 +25,7 @@ const SignUpForm = () => {
       const fetchProfessions = async () => {
         try {
           const { data } = await axios.get("/profiles/professions/");
-          setProfessions(data); // Assumes the API returns an array of professions
+          setProfessions(data);
         } catch (err) {
           console.error("Error fetching professions:", err);
         }
@@ -35,21 +36,17 @@ const SignUpForm = () => {
 
     const handleChange = (event) => {
       const { name, value } = event.target;
-    
-      // Update the signUpData state
       setSignUpData((prevState) => ({
         ...prevState,
         [name]: value,
       }));
     
-      // Handle validation for the profession field
       if (name === "profession" && !professions.includes(value)) {
         setErrors((prevErrors) => ({
           ...prevErrors,
           profession: ["Please select a valid profession."],
         }));
       } else if (name === "profession") {
-        // Clear profession errors if valid
         setErrors((prevErrors) => ({
           ...prevErrors,
           profession: undefined,
@@ -138,7 +135,7 @@ const SignUpForm = () => {
 <Form.Group as={Row} controlId="profession">
               <Form.Label className="d-none">Profession</Form.Label>
               <Form.Control
-                as="select" // Dropdown menu
+                as="select"
                 className={styles.Input}
                 name="profession"
                 value={profession}
@@ -182,9 +179,7 @@ const SignUpForm = () => {
       >
         <Image
           className={`${appStyles.FillerImage}`}
-          src={
-            ""
-          }
+          src={SigninPhoto}
         />
       </Col>
     </Row>
