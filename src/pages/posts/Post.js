@@ -107,10 +107,10 @@ const Post = (props) => {
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
         <div  className="d-flex justify-content-around text-capitalize">
-        {location && <Card.Text className="text-center"><i class="fa-solid fa-location-dot"></i> {location}</Card.Text>}
-        {completion_date && <Card.Text className="text-center"><i class="fa-solid fa-calendar-check"></i> {completion_date}</Card.Text>}
-        {area_type && <Card.Text><i class="fa-solid fa-chart-area"></i> {area_type}</Card.Text>}
-        {style && <Card.Text><i class="fa-solid fa-lines-leaning"></i> {style}</Card.Text>}
+        {location && <Card.Text className="text-center"><i className="fa-solid fa-location-dot"></i> {location}</Card.Text>}
+        {completion_date && <Card.Text className="text-center"><i className="fa-solid fa-calendar-check"></i> {completion_date}</Card.Text>}
+        {area_type && <Card.Text><i className="fa-solid fa-chart-area"></i> {area_type}</Card.Text>}
+        {style && <Card.Text><i className="fa-solid fa-lines-leaning"></i> {style}</Card.Text>}
         </div>
         <br/>
         {content && <Card.Text>{content}</Card.Text>}

@@ -199,6 +199,7 @@ not done yet
 ## Bugs Fixed
 
 On the NavBar the image for the Avatar does not appear
+Used class instead of className - fixed
 
 ![Deployment 6](/src/assets/readme_images/inspira-test1.png)
 

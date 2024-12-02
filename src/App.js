@@ -15,6 +15,7 @@ import PostEditForm from "./pages/posts/PostEditForm";
 
 import ProfilePage from "./pages/profiles/ProfilePage";
 import InfoPage from "./pages/info/InfoPage";
+import NotFound from "./components/NotFound";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -59,9 +60,8 @@ function App() {
               <Route exact path="/posts/:id" render={() => <PostPage />} />
               <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
               <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
-              <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
               <Route exact path="/info" render={() => <InfoPage />} />
-              <Route render={() => <p>Page not found!</p>} />
+              <Route render={() => <NotFound />} />
             </Switch>
           </Container>
         </div>
