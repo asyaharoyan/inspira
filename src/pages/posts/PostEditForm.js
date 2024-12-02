@@ -17,7 +17,8 @@ import { axiosReq } from "../../api/axiosDefaults";
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
-  const[formData, setFormData] = useState({});
+  const [areaChoices, setAreaChoices] = useState([]);
+  const [styleChoices, setStyleChoices] = useState([]);
 
   const [postData, setPostData] = useState({
     title: "",
@@ -33,6 +34,24 @@ function PostEditForm() {
   const imageInput = useRef(null);
   const history = useHistory();
   const { id } = useParams();
+
+  useEffect(() => {
+    const fetchChoices = async () => {
+      try {
+        // Fetch area type choices
+        const areaResponse = await axiosReq.get("/posts/area_type/");
+        setAreaChoices(areaResponse.data);
+
+        // Fetch style choices
+        const styleResponse = await axiosReq.get("/posts/style/");
+        setStyleChoices(styleResponse.data);
+      } catch (err) {
+        console.error("Error fetching area or style choices:", err);
+      }
+    };
+
+    fetchChoices();
+  }, []);
 
   useEffect(() => {
     const handleMount = async () => {
@@ -51,10 +70,35 @@ function PostEditForm() {
   }, [history, id]);
 
   const handleChange = (event) => {
-    setPostData({
-      ...postData,
-      [event.target.name]: event.target.value,
-    });
+    const { name, value } = event.target;
+    setPostData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+
+    if (name === "area_type" && !areaChoices.includes(value)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        area_type: ["Please select a valid area type."],
+      }));
+    } else if (name === "area_type") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        area_type: undefined,
+      }));
+    }
+
+    if (name === "style" && !styleChoices.includes(value)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        style: ["Please select a valid style."],
+      }));
+    } else if (name === "style") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        style: undefined,
+      }));
+    }
   };
 
   const handleChangeImage = (event) => {
@@ -65,13 +109,6 @@ function PostEditForm() {
         image: URL.createObjectURL(event.target.files[0]),
       });
     }
-  };
-
-  const handleChangeDate = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
   };
 
   const handleSubmit = async (event) => {
@@ -120,11 +157,19 @@ function PostEditForm() {
 <Form.Group>
         <Form.Label>Style</Form.Label>
         <Form.Control
-          type="text"
-          name="syle"
+          as="select"
+          name="style"
           value={style}
           onChange={handleChange}
-        />
+          className="text-capitalize"
+        >
+          <option value="">Select Style</option>
+          {styleChoices.map((choice, idx) => (
+            <option key={idx} value={choice}>
+              {choice}
+            </option>
+          ))}
+        </Form.Control>
       </Form.Group>
       {errors?.style?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -132,14 +177,22 @@ function PostEditForm() {
         </Alert>
       ))}
 
-      <Form.Group>
+<Form.Group>
         <Form.Label>Area Type</Form.Label>
         <Form.Control
-          type="text"
+          as="select"
           name="area_type"
           value={area_type}
           onChange={handleChange}
-        />
+          className="text-capitalize"
+        >
+          <option value="">Select Area Type</option>
+          {areaChoices.map((choice, idx) => (
+            <option key={idx} value={choice}>
+              {choice}
+            </option>
+          ))}
+        </Form.Control>
       </Form.Group>
       {errors?.area_type?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -168,7 +221,7 @@ function PostEditForm() {
           type="date"
           name="completion_date"
           value={completion_date}
-          onChange={handleChangeDate}
+          onChange={handleChange}
         />
       </Form.Group>
       {errors?.completion_date?.map((message, idx) => (
