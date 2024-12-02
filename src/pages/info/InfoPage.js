@@ -7,7 +7,7 @@ function InfoPage() {
   return (
     <>
     <Row className="d-flex justify-content-center">
-        <Col className="my-auto p-0 p-md-2" md={8}>
+        <Col className="my-auto p-3 p-md-2" md={8}>
             <Container 
                 className={`${appStyles.Content} ${styles.InfoPage} d-flex justify-content-center align-items-center`}>
             <h2>Welcome to Inspira!</h2>            
@@ -15,7 +15,7 @@ function InfoPage() {
         </Col>
         </Row>
         <Row className="d-flex justify-content-center">
-        <Col className="my-auto p-0 p-md-2" md={8}>
+        <Col className="my-auto p-3 p-md-2" md={8}>
             <Container 
                 className={`${appStyles.Content} ${styles.InfoPage} d-flex flex-column justify-content-center align-items-center`}>
             <h3>About Us</h3>
@@ -31,7 +31,7 @@ function InfoPage() {
         </Col>
         </Row>
         <Row className="d-flex justify-content-center">
-        <Col className="my-auto p-0 p-md-2" md={8}>
+        <Col className="my-auto p-3 p-md-2" md={8}>
             <Container 
                 className={`${appStyles.Content} ${styles.InfoPage} d-flex flex-column justify-content-center`}>
             <h3 className="text-center">Terms</h3>
