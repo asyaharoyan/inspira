@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -23,7 +23,9 @@ import { useRedirect } from "../../hooks/useRedirect";
 function PostCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
-  const[formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({});
+  const [areaChoices, setAreaChoices] = useState([]);
+  const [styleChoices, setStyleChoices] = useState([]);
 
   const [postData, setPostData] = useState({
     title: "",
@@ -39,11 +41,55 @@ function PostCreateForm() {
   const imageInput = useRef(null);
   const history = useHistory();
 
+  useEffect(() => {
+    const fetchChoices = async () => {
+      try {
+        // Fetch area type choices
+        const areaResponse = await axiosReq.get("/posts/area_type/");
+        setAreaChoices(areaResponse.data);  // Assuming response is an array
+
+        // Fetch style choices
+        const styleResponse = await axiosReq.get("/posts/style/");
+        setStyleChoices(styleResponse.data);  // Assuming response is an array
+      } catch (err) {
+        console.error("Error fetching area or style choices:", err);
+      }
+    };
+
+    fetchChoices();
+  }, []);
+
   const handleChange = (event) => {
-    setPostData({
-      ...postData,
-      [event.target.name]: event.target.value,
-    });
+    const { name, value } = event.target;
+    setPostData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+
+    // Inline validation for style and area_type fields
+    if (name === "area_type" && !areaChoices.includes(value)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        area_type: ["Please select a valid area type."],
+      }));
+    } else if (name === "area_type") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        area_type: undefined,
+      }));
+    }
+
+    if (name === "style" && !styleChoices.includes(value)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        style: ["Please select a valid style."],
+      }));
+    } else if (name === "style") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        style: undefined,
+      }));
+    }
   };
 
   const handleChangeImage = (event) => {
@@ -104,14 +150,22 @@ function PostCreateForm() {
         </Alert>
       ))}
 
-      <Form.Group>
+<Form.Group>
         <Form.Label>Style</Form.Label>
         <Form.Control
-          type="text"
-          name="syle"
+          as="select"
+          name="style"
           value={style}
           onChange={handleChange}
-        />
+          className="text-capitalize"
+        >
+          <option value="">Select Style</option>
+          {styleChoices.map((choice, idx) => (
+            <option key={idx} value={choice}>
+              {choice}
+            </option>
+          ))}
+        </Form.Control>
       </Form.Group>
       {errors?.style?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -119,14 +173,22 @@ function PostCreateForm() {
         </Alert>
       ))}
 
-      <Form.Group>
+<Form.Group>
         <Form.Label>Area Type</Form.Label>
         <Form.Control
-          type="text"
+          as="select"
           name="area_type"
           value={area_type}
           onChange={handleChange}
-        />
+          className="text-capitalize"
+        >
+          <option value="">Select Area Type</option>
+          {areaChoices.map((choice, idx) => (
+            <option key={idx} value={choice}>
+              {choice}
+            </option>
+          ))}
+        </Form.Control>
       </Form.Group>
       {errors?.area_type?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
