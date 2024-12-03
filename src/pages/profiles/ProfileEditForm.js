@@ -10,31 +10,56 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
 import { axiosReq } from "../../api/axiosDefaults";
-import {
-  useCurrentUser,
-  useSetCurrentUser,
-} from "../../contexts/CurrentUserContext";
+// import {
+//   useCurrentUser,
+//   useSetCurrentUser,
+// } from "../../contexts/CurrentUserContext";
 import axios from "axios";
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
-const ProfileEditForm = () => {
-  const currentUser = useCurrentUser();
-  const setCurrentUser = useSetCurrentUser();
-  const { id } = useParams();
-  const history = useHistory();
-  const imageFile = useRef();
-
+function ProfileEditForm() {
+  const [errors, setErrors] = useState({});
+  const [professions, setProfessions] = useState([]);
   const [profileData, setProfileData] = useState({
-    name: "",
-    content: "",
+    full_name: "",
+    about: "",
     image: "",
     profession: "",
+    years_of_experience: "",
+    website: "",
+    location: "",
   });
-  const { name, content, image, profession } = profileData;
-  const [professions, setProfessions] = useState([]);
-  const [errors, setErrors] = useState({});
+
+  const { full_name, about, image, profession, years_of_experience, website, location } = profileData;
+
+  const imageFile = useRef();
+  const history = useHistory();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const { data } = await axiosReq.get(`/profiles/${id}/`);
+        const { full_name, about, image, profession, years_of_experience, website, location, is_owner } = data;
+
+        is_owner ? setProfileData({
+          full_name,
+          about,
+          image,
+          profession,
+          years_of_experience,
+          website,
+          location
+        }) : history.push("/");
+      } catch (err) {
+        console.log(err)
+      }
+    };
+
+    fetchProfile();
+  }, [history, id]);
 
   useEffect(() => {
     const fetchProfessions = async () => {
@@ -49,72 +74,60 @@ const ProfileEditForm = () => {
     fetchProfessions();
   }, []);
 
-  useEffect(() => {
-    const handleMount = async () => {
-      if (currentUser?.profile_id?.toString() === id) {
-        try {
-          const { data } = await axiosReq.get(`/profiles/${id}/`);
-          const { name, content, image, profession } = data;
-          setProfileData({ name, content, image, profession });
-        } catch (err) {
-          // console.log(err);
-          history.push("/");
-        }
-      } else {
-        history.push("/");
-      }
-    };
-
-    handleMount();
-  }, [currentUser, history, id]);
-
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setProfileData({
-      ...profileData,
-      [event.target.name]: event.target.value,
-    });
-
-    if (name === "profession" && !professions.includes(value)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        profession: ["Please select a valid profession."],
-      }));
-    } else if (name === "profession") {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        profession: undefined,
-      }));
-    }
+    setProfileData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("content", content);
+
+    formData.append("full_name", full_name);
+    formData.append("about", about);
     formData.append("profession", profession);
+    formData.append("years_of_experience", years_of_experience);
+    formData.append("website", website);
+    formData.append("location", location);
 
     if (imageFile?.current?.files[0]) {
-      formData.append("image", imageFile?.current?.files[0]);
+      formData.append("image", imageFile.current.files[0]);
     }
 
     try {
-      const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
-      setCurrentUser((currentUser) => ({
-        ...currentUser,
-        profile_image: data.image,
-      }));
-      history.goBack();
+      await axiosReq.put(`/profiles/${id}/`, formData);
+      history.push(`/profiles/${id}`);
     } catch (err) {
-      // console.log(err);
-      setErrors(err.response?.data);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
     }
   };
 
   const textFields = (
     <>
+    <Form.Group controlId="full_name">
+    <Form.Label>
+      Full Name
+    </Form.Label>
+    
+      <Form.Control
+      type="text"
+      placeholder="Full Name"
+      name="full_name"
+      value={full_name}
+      onChange={handleChange} />
+    
+  </Form.Group>
+  {errors.full_name?.map((message, idx) =>
+    <Alert variant="warning" key={idx}>
+    {message}
+  </Alert>
+)}
+
       <Form.Group>
     <Form.Label>Profession</Form.Label>
     <Form.Control
@@ -137,18 +150,76 @@ const ProfileEditForm = () => {
     </Alert>
   ))}
 
+<Form.Group>
+    <Form.Label>
+      Years of experience
+    </Form.Label>
+    
+      <Form.Control
+      type="number"
+      placeholder="Experience"
+      name="years_of_experience"
+      value={years_of_experience}
+      onChange={handleChange}
+      min="0" />
+    
+  </Form.Group>
+  {errors.years_of_experience?.map((message, idx) =>
+    <Alert variant="warning" key={idx}>
+    {message}
+  </Alert>
+)}
+
+<Form.Group>
+    <Form.Label>
+      Your website URL
+    </Form.Label>
+    
+      <Form.Control
+      type="url"
+      placeholder="Website"
+      name="website"
+      value={website}
+      onChange={handleChange}/>
+    
+  </Form.Group>
+  {errors.website?.map((message, idx) =>
+    <Alert variant="warning" key={idx}>
+    {message}
+  </Alert>
+)}
+
+<Form.Group>
+    <Form.Label>
+      Location
+    </Form.Label>
+    
+      <Form.Control
+      type="text"
+      placeholder="Location"
+      name="location"
+      value={location}
+      onChange={handleChange}/>
+    
+  </Form.Group>
+  {errors.location?.map((message, idx) =>
+    <Alert variant="warning" key={idx}>
+    {message}
+  </Alert>
+)}
+
       <Form.Group>
-        <Form.Label>Bio</Form.Label>
+        <Form.Label>About me</Form.Label>
         <Form.Control
           as="textarea"
-          value={content}
+          value={about}
           onChange={handleChange}
-          name="content"
+          name="about"
           rows={7}
         />
       </Form.Group>
 
-      {errors?.content?.map((message, idx) => (
+      {errors?.about?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>

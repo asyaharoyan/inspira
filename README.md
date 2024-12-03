@@ -200,7 +200,8 @@ not done yet
 
 On the NavBar the image for the Avatar does not appear
 Used class instead of className - fixed
-Can not let the picture to be the same in post edit form - 
+Can not let the picture to be the same in post edit form - not fixed
+Can not change the profile page - fixed
 
 ![Deployment 6](/src/assets/readme_images/inspira-test1.png)
 
