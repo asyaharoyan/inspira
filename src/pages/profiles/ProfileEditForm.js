@@ -14,6 +14,7 @@ import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
+import axios from "axios";
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
@@ -29,18 +30,32 @@ const ProfileEditForm = () => {
     name: "",
     content: "",
     image: "",
+    profession: "",
   });
-  const { name, content, image } = profileData;
-
+  const { name, content, image, profession } = profileData;
+  const [professions, setProfessions] = useState([]);
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const fetchProfessions = async () => {
+      try {
+        const { data } = await axios.get("/profiles/professions/");
+        setProfessions(data);
+      } catch (err) {
+        console.error("Error fetching professions:", err);
+      }
+    };
+
+    fetchProfessions();
+  }, []);
 
   useEffect(() => {
     const handleMount = async () => {
       if (currentUser?.profile_id?.toString() === id) {
         try {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
-          const { name, content, image } = data;
-          setProfileData({ name, content, image });
+          const { name, content, image, profession } = data;
+          setProfileData({ name, content, image, profession });
         } catch (err) {
           // console.log(err);
           history.push("/");
@@ -54,17 +69,32 @@ const ProfileEditForm = () => {
   }, [currentUser, history, id]);
 
   const handleChange = (event) => {
+    const { name, value } = event.target;
     setProfileData({
       ...profileData,
       [event.target.name]: event.target.value,
     });
+
+    if (name === "profession" && !professions.includes(value)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        profession: ["Please select a valid profession."],
+      }));
+    } else if (name === "profession") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        profession: undefined,
+      }));
+    }
   };
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("name", name);
     formData.append("content", content);
+    formData.append("profession", profession);
 
     if (imageFile?.current?.files[0]) {
       formData.append("image", imageFile?.current?.files[0]);
@@ -85,6 +115,28 @@ const ProfileEditForm = () => {
 
   const textFields = (
     <>
+      <Form.Group>
+    <Form.Label>Profession</Form.Label>
+    <Form.Control
+      as="select"
+      value={profession}
+      onChange={handleChange}
+      name="profession"
+    >
+      <option value="">Select Profession</option>
+      {professions.map((prof, idx) => (
+        <option key={idx} value={prof}>
+          {prof}
+        </option>
+      ))}
+    </Form.Control>
+  </Form.Group>
+  {errors?.profession?.map((message, idx) => (
+    <Alert variant="warning" key={idx}>
+      {message}
+    </Alert>
+  ))}
+
       <Form.Group>
         <Form.Label>Bio</Form.Label>
         <Form.Control
