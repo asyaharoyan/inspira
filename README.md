@@ -198,10 +198,21 @@ not done yet
 
 ## Bugs Fixed
 
-On the NavBar the image for the Avatar does not appear
+On the NavBar the image for the Avatar does not appear -
+
 Used class instead of className - fixed
-Can not let the picture to be the same in post edit form - not fixed
+
+Choosing date does not fork in create post form - fixed. The proble was that i was updating formData, needed to update postData.
+
+Can not let the picture to be the same in post edit form - 
+
 Can not change the profile page - fixed
+
+It logs in after refreshing the page - 
+
+Chosen profile does not show in profile page
+
+When delete the post it redirects to edit form
 
 ![Deployment 6](/src/assets/readme_images/inspira-test1.png)
 

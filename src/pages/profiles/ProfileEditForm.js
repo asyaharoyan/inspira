@@ -25,14 +25,14 @@ function ProfileEditForm() {
   const [profileData, setProfileData] = useState({
     full_name: "",
     about: "",
-    image: "",
+    avatar: "",
     profession: "",
     years_of_experience: "",
     website: "",
     location: "",
   });
 
-  const { full_name, about, image, profession, years_of_experience, website, location } = profileData;
+  const { full_name, about, avatar, profession, years_of_experience, website, location } = profileData;
 
   const imageFile = useRef();
   const history = useHistory();
@@ -42,12 +42,12 @@ function ProfileEditForm() {
     const fetchProfile = async () => {
       try {
         const { data } = await axiosReq.get(`/profiles/${id}/`);
-        const { full_name, about, image, profession, years_of_experience, website, location, is_owner } = data;
+        const { full_name, about, avatar, profession, years_of_experience, website, location, is_owner } = data;
 
         is_owner ? setProfileData({
           full_name,
           about,
-          image,
+          avatar,
           profession,
           years_of_experience,
           website,
@@ -94,7 +94,7 @@ function ProfileEditForm() {
     formData.append("location", location);
 
     if (imageFile?.current?.files[0]) {
-      formData.append("image", imageFile.current.files[0]);
+      formData.append("avatar", imageFile.current.files[0]);
     }
 
     try {
@@ -242,12 +242,12 @@ function ProfileEditForm() {
         <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
           <Container className={appStyles.Content}>
             <Form.Group>
-              {image && (
+              {avatar && (
                 <figure>
-                  <Image src={image} fluid />
+                  <Image src={avatar} fluid />
                 </figure>
               )}
-              {errors?.image?.map((message, idx) => (
+              {errors?.avatar?.map((message, idx) => (
                 <Alert variant="warning" key={idx}>
                   {message}
                 </Alert>

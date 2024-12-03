@@ -23,7 +23,6 @@ import { useRedirect } from "../../hooks/useRedirect";
 function PostCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
-  const [formData, setFormData] = useState({});
   const [areaChoices, setAreaChoices] = useState([]);
   const [styleChoices, setStyleChoices] = useState([]);
 
@@ -103,11 +102,11 @@ function PostCreateForm() {
   };
 
   const handleChangeDate = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
-    console.log("change date")
+    const { name, value } = event.target;
+    setPostData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (event) => {

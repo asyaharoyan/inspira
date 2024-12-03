@@ -10,7 +10,6 @@ import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-// import PopularProfiles from "./PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -39,6 +38,8 @@ function ProfilePage() {
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
+  console.log('profile in profile page: ', profile)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -64,21 +65,28 @@ function ProfilePage() {
     <>
       {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
       <h2 className="m-2 text-center">{profile?.full_name}</h2>
+      <br />
       <Row noGutters className="px-3 text-center">
-        
         <Col lg={4} className="text-lg-left">
           <Image
             className={styles.ProfileImage}
             roundedCircle
-            src={profile?.image}
+            src={profile?.avatar}
           />
         </Col>
-        <Col xs={7} className="my-2">
-              <h3>About Me</h3>
-              <div>{profile?.about}</div>
-            </Col>
+        {profile?.about ? (
+          <Col xs={7} className="my-2">
+            <h3 className={styles.ProfilePage}>About Me</h3>
+            <div>{profile?.about}</div>
+            <br />
+          </Col>
+        ) : (
+          <Col xs={8} className="my-2">
+            <p>No bio provided yet.</p>
+          </Col>
+        )}
+
         <Col lg={12}>
-          
           <Row className="justify-content-center no-gutters">
             <Col xs={4} className="my-2">
               <h3 className={styles.ProfilePage}>Followers</h3>
@@ -94,21 +102,35 @@ function ProfilePage() {
             </Col>
             <Col xs={4} className="my-2">
               <h3 className={styles.ProfilePage}>Experience</h3>
-              <div>{profile?.years_of_experience} years</div>
+              <div>
+                {profile?.years_of_experience ? (
+                  `${profile.years_of_experience} years`
+                ) : (
+                  "- -"
+                )}
+              </div>
             </Col>
             <Col xs={4} className="my-2">
               <h3 className={styles.ProfilePage}>Website</h3>
               <div>
-                <a href={profile?.website} 
-                target="_blank" 
-                rel="noopener noreferrer">
-                  My LinkedIn
-                </a>
+                {profile?.website ? (
+                  <a 
+                    href={profile.website} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    Click Here
+                  </a>
+                ) : (
+                  <p>- -</p>
+                )}
               </div>
             </Col>
             <Col xs={4} className="my-2">
               <h3 className={styles.ProfilePage}>Location</h3>
-              <div>{profile?.location}</div>
+              <div>{profile?.location ? (
+                `${profile.location}`
+              ) : ("- -")}</div>
             </Col>
           </Row>
         </Col>
