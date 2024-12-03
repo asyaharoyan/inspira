@@ -63,7 +63,7 @@ function ProfilePage() {
   const mainProfile = (
     <>
       {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
-      <h3 className="m-2 text-center">{profile?.full_name}</h3>
+      <h2 className="m-2 text-center">{profile?.full_name}</h2>
       <Row noGutters className="px-3 text-center">
         
         <Col lg={4} className="text-lg-left">
@@ -74,30 +74,30 @@ function ProfilePage() {
           />
         </Col>
         <Col xs={7} className="my-2">
-              <div>About Me</div>
+              <h3>About Me</h3>
               <div>{profile?.about}</div>
             </Col>
         <Col lg={12}>
           
           <Row className="justify-content-center no-gutters">
             <Col xs={4} className="my-2">
-              <div>Followers</div>
+              <h3 className={styles.ProfilePage}>Followers</h3>
               <div>{profile?.followers_count}</div>
             </Col>
             <Col xs={4} className="my-2">
-              <div>Following</div>
+              <h3 className={styles.ProfilePage}>Following</h3>
               <div>{profile?.following_count}</div>
             </Col>
             <Col xs={4} className="my-2">
-              <div>Profession</div>
+              <h3 className={styles.ProfilePage}>Profession</h3>
               <div>{profile?.profession}</div>
             </Col>
             <Col xs={4} className="my-2">
-              <div>Experience</div>
+              <h3 className={styles.ProfilePage}>Experience</h3>
               <div>{profile?.years_of_experience} years</div>
             </Col>
             <Col xs={4} className="my-2">
-              <div>Website</div>
+              <h3 className={styles.ProfilePage}>Website</h3>
               <div>
                 <a href={profile?.website} 
                 target="_blank" 
@@ -107,7 +107,7 @@ function ProfilePage() {
               </div>
             </Col>
             <Col xs={4} className="my-2">
-              <div>Location</div>
+              <h3 className={styles.ProfilePage}>Location</h3>
               <div>{profile?.location}</div>
             </Col>
           </Row>
