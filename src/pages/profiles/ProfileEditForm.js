@@ -67,7 +67,7 @@ function ProfileEditForm() {
         const { data } = await axios.get("/profiles/professions/");
         setProfessions(data);
       } catch (err) {
-        // console.error("Error fetching professions:", err);
+        console.error("Error fetching professions:", err);
       }
     };
 
