@@ -198,25 +198,46 @@ not done yet
 
 ## Bugs Fixed
 
-On the NavBar the image for the Avatar does not appear -
+Used class instead of className - Searched all classes and changed them to className
 
-Used class instead of className - fixed
+![Debug className](/src/assets/readme_images/debug-classname.png)
 
-Choosing date does not fork in create post form - fixed. The proble was that i was updating formData, needed to update postData.
-
-Can not let the picture to be the same in post edit form - 
+Choosing date does not work in create post form - The problem was that i was updating formData, needed to update postData.
 
 Can not change the profile page - fixed
 
 It logs in after refreshing the page - 
 
-Chosen profile does not show in profile page
+Chosen profile does not show in profile image - It has been fixed by changing src attribute in profile image.
+![Debug profile picture](/src/assets/readme_images/debug-profile-image.png)
 
-When delete the post it redirects to edit form
+It does not show that the picture has been changed but it changes in profile edit form - 
 
-![Deployment 6](/src/assets/readme_images/inspira-test1.png)
+The profile picture did not appear in NavBar, next to the comments or posts - Fixed
+
+It has been fixed by debugging with console.logs. As it appears I had a wrong path in my backend.
+
+Changing the name of the source to avatar gave the same error and that it is undefined
+![Debug 1](/src/assets/readme_images/debug-profile-pic.png)
+
+Profile image was undefined too and it made clear that it is not being connected to the front end because of the source.
+![Debug 2](/src/assets/readme_images/debug-profile-pic1.png)
+
+In preview it showed that profile_image is not with the user 4
+![Debug 3](/src/assets/readme_images/debug-profile-pic2.png)
+
+The problem was from the backend. In serializers.py profile_image was defined wrong.
+
+    profile_image = serializers.ReadOnlyField(source='profile.image.url')
+
+It has been changed to
+    profile_image = serializers.ReadOnlyField(source='profile.avatar.url')
+
+![Debug 4](/src/assets/readme_images/debug-profile-pic3.png)
 
 ## Bugs Unresolved
+
+Can not let the picture to be the same in post edit form - It forces the user to choose a picture as it removes the old one.
 
 # Deployment To Heroku
 

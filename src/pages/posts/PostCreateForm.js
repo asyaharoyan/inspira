@@ -51,7 +51,7 @@ function PostCreateForm() {
         const styleResponse = await axiosReq.get("/posts/style/");
         setStyleChoices(styleResponse.data);  // Assuming response is an array
       } catch (err) {
-        console.error("Error fetching area or style choices:", err);
+        // console.error("Error fetching area or style choices:", err);
       }
     };
 
@@ -125,7 +125,7 @@ function PostCreateForm() {
       const { data } = await axiosReq.post("/posts/", formData);
       history.push(`/posts/${data.id}`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

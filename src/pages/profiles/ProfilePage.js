@@ -38,8 +38,6 @@ function ProfilePage() {
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
-  console.log('profile in profile page: ', profile)
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -67,21 +65,21 @@ function ProfilePage() {
       <h2 className="m-2 text-center">{profile?.full_name}</h2>
       <br />
       <Row noGutters className="px-3 text-center">
-        <Col lg={4} className="text-lg-left">
+        <Col lg={6} className="text-lg-center">
           <Image
             className={styles.ProfileImage}
             roundedCircle
-            src={profile?.avatar}
+            src={profile?.profile_image}
           />
         </Col>
         {profile?.about ? (
-          <Col xs={7} className="my-2">
+          <Col xs={6} className="my-2">
             <h3 className={styles.ProfilePage}>About Me</h3>
             <div>{profile?.about}</div>
             <br />
           </Col>
         ) : (
-          <Col xs={8} className="my-2">
+          <Col xs={6} className="my-2">
             <p>No bio provided yet.</p>
           </Col>
         )}
