@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
 
 import appStyles from "../../App.module.css";
 import { useParams } from "react-router";
@@ -17,6 +18,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
+
 
 function PostPage() {
   const { id } = useParams();
@@ -78,7 +80,8 @@ function PostPage() {
           ) : currentUser ? (
             <span>No comments yet, be the first to comment!</span>
           ) : (
-            <span>No comments... yet</span>
+            <span>No comments. To comment, please <Link to="/signin">Sign in
+          </Link></span>
           )}
         </Container>
       </Col>

@@ -36,14 +36,13 @@
   }
   
   a:hover {
-    text-decoration: none;
-    color: #42413d;
-    font-weight: 700;
-    font-size: 1.1rem;
+    text-decoration: underline;
+    transition: color ease-in-out 0.4s;
+    color: #333230;
   }
   
   a:hover i {
-    color: #42413d;
+    color: #333230;
     transition: color ease-in-out 0.4s;
   }
 
@@ -61,7 +60,7 @@
   i:hover {
     cursor: pointer;
     transition: color ease-in 0.5s;
-    color: #272420;
+    color: #333230;
   }
 
   figure {
