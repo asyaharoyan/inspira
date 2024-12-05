@@ -76,18 +76,6 @@ function PostEditForm() {
       [name]: value,
     }));
 
-    if (name === "area_type" && !areaChoices.includes(value)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        area_type: ["Please select a valid area type."],
-      }));
-    } else if (name === "area_type") {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        area_type: undefined,
-      }));
-    }
-
     if (name === "style" && !styleChoices.includes(value)) {
       setErrors((prevErrors) => ({
         ...prevErrors,

@@ -65,20 +65,8 @@ function PostCreateForm() {
       [name]: value,
     }));
 
-    // Inline validation for style and area_type fields
-    if (name === "area_type" && !areaChoices.includes(value)) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        area_type: ["Please select a valid area type."],
-      }));
-    } else if (name === "area_type") {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        area_type: undefined,
-      }));
-    }
-
-    if (name === "style" && !styleChoices.includes(value)) {
+    // Inline validation for style field
+    if (name === "style" && !value) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         style: ["Please select a valid style."],
@@ -111,6 +99,16 @@ function PostCreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Check if style is empty or invalid
+    if (!style || !styleChoices.includes(style)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        style: ["Please select a valid style."],
+      }));
+      return; // Stop the form submission if there's an error
+    }
+
     const formData = new FormData();
 
     formData.append("title", title);
