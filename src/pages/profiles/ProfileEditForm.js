@@ -80,6 +80,25 @@ function ProfileEditForm() {
       ...prevState,
       [name]: value,
     }));
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: [],
+    }));
+
+    if (name === "years_of_experience" && value < 0) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        years_of_experience: ["Years of experience cannot be negative."],
+      }));
+    }
+
+    if (name === "website" && value && !/^(https?:\/\/)/.test(value)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        website: ["Website must start with http:// or https://."],
+      }));
+    }
   };
 
   const handleSubmit = async (event) => {
