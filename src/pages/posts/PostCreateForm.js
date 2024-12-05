@@ -106,7 +106,7 @@ function PostCreateForm() {
         ...prevErrors,
         style: ["Please select a valid style."],
       }));
-      return; // Stop the form submission if there's an error
+      return;
     }
 
     const formData = new FormData();
