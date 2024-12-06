@@ -38,11 +38,9 @@ function PostEditForm() {
   useEffect(() => {
     const fetchChoices = async () => {
       try {
-        // Fetch area type choices
         const areaResponse = await axiosReq.get("/posts/area_type/");
         setAreaChoices(areaResponse.data);
 
-        // Fetch style choices
         const styleResponse = await axiosReq.get("/posts/style/");
         setStyleChoices(styleResponse.data);
       } catch (err) {

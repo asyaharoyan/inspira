@@ -43,13 +43,11 @@ function PostCreateForm() {
   useEffect(() => {
     const fetchChoices = async () => {
       try {
-        // Fetch area type choices
         const areaResponse = await axiosReq.get("/posts/area_type/");
-        setAreaChoices(areaResponse.data);  // Assuming response is an array
+        setAreaChoices(areaResponse.data);
 
-        // Fetch style choices
         const styleResponse = await axiosReq.get("/posts/style/");
-        setStyleChoices(styleResponse.data);  // Assuming response is an array
+        setStyleChoices(styleResponse.data);
       } catch (err) {
         console.error("Error fetching area or style choices:", err);
       }
@@ -65,7 +63,6 @@ function PostCreateForm() {
       [name]: value,
     }));
 
-    // Inline validation for style field
     if (name === "style" && !value) {
       setErrors((prevErrors) => ({
         ...prevErrors,
@@ -100,7 +97,6 @@ function PostCreateForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Check if style is empty or invalid
     if (!style || !styleChoices.includes(style)) {
       setErrors((prevErrors) => ({
         ...prevErrors,
@@ -123,7 +119,6 @@ function PostCreateForm() {
       const { data } = await axiosReq.post("/posts/", formData);
       history.push(`/posts/${data.id}`);
     } catch (err) {
-      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

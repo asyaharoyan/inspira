@@ -19,7 +19,7 @@ function PostPage() {
   const { id } = useParams();
   const [post, setPost] = useState({ results: [] });
   const [comments, setComments] = useState({ results: [] });
-  const [isLoading, setIsLoading] = useState(true); // Single loading state
+  const [isLoading, setIsLoading] = useState(true);
 
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
@@ -36,7 +36,7 @@ function PostPage() {
       } catch (err) {
         console.log(err);
       } finally {
-        setIsLoading(false); // Set loading to false once the data is fetched
+        setIsLoading(false);
       }
     };
 
