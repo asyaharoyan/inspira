@@ -235,6 +235,8 @@ It has been changed to
 
 ![Debug 4](/src/assets/readme_images/debug-profile-pic3.png)
 
+The profile picture is not updating on the right corner if I don't refresh the page - 
+
 ## Bugs Unresolved
 
 Can not let the picture to be the same in post edit form - It forces the user to choose a picture as it removes the old one.
