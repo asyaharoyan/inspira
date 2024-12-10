@@ -287,7 +287,7 @@ function ProfileEditForm() {
                   if (e.target.files.length) {
                     setProfileData({
                       ...profileData,
-                      image: URL.createObjectURL(e.target.files[0]),
+                      avatar: URL.createObjectURL(e.target.files[0]),
                     });
                   }
                 }}
