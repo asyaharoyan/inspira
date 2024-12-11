@@ -24,6 +24,7 @@ import Post from "../posts/Post";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -59,7 +60,7 @@ function ProfilePage() {
     fetchData();
   }, [id, setProfileData]);
 
-  const mainProfile = (
+  const mainProfile = currentUser ? (
     <>
       {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
       <h2 className="m-2 text-center">{profile?.full_name}</h2>
@@ -154,6 +155,13 @@ function ProfilePage() {
         {profile?.content && <Col className="p-3">{profile.content}</Col>}
       </Row>
     </>
+  ) : (
+    <Link to="/signin">
+      <p  className="text-center font-weight-bold">
+      Please Sign in to view profile details.
+      </p>
+    </Link>
+    
   );
 
   const mainProfilePosts = (
