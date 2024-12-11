@@ -93,7 +93,7 @@ const NavBar = () => {
     <Navbar
     expanded={expanded}
     className={styles.NavBar}
-    expand="md" fixed="top">
+    expand="lg" fixed="top">
       <Container>
         <NavLink to="/" activeClassName={styles.Active}>
           <Navbar.Brand>
