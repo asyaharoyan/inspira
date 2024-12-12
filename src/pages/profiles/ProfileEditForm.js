@@ -14,8 +14,14 @@ import axios from "axios";
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../../contexts/CurrentUserContext";
 
 function ProfileEditForm() {
+  const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
   const [errors, setErrors] = useState({});
   const [professions, setProfessions] = useState([]);
   const [profileData, setProfileData] = useState({
@@ -55,7 +61,7 @@ function ProfileEditForm() {
     };
 
     fetchProfile();
-  }, [history, id]);
+  }, [currentUser, history, id]);
 
   useEffect(() => {
     const fetchProfessions = async () => {
@@ -113,12 +119,15 @@ function ProfileEditForm() {
     }
 
     try {
-      await axiosReq.put(`/profiles/${id}/`, formData);
-      history.push(`/profiles/${id}`);
+      const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
+      setCurrentUser((currentUser) => ({
+        ...currentUser,
+        profile_image: data.avatar,
+      }));
+      history.goBack();
     } catch (err) {
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
-      }
+      // console.log(err);
+      setErrors(err.response?.data);
     }
   };
 

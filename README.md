@@ -129,6 +129,7 @@ A logged in user will have access to the following
 - Follow/unfollow users
 - Like posts
 - See popular profiles
+- See information about the user
 
 ## Existing Features
 
@@ -155,12 +156,52 @@ A logged in user will have access to the following
   - Sign out
   - Avatar
 
-### Page Not Found
-not done yet
+### Search bar
 
-### Comments
+### Posts card
+
+### Create post page
+
+### Post page
+
+### Most Active Profiles
+
+### Sign in/ Sign up
+
+### Informative info page for terms and conditions
+
+### Like page
+
+### Profile page
+
+### Comment / Like
+
+### Notifications
+
+### Not found
+The page has been designed to show a clear information to the user. It is custom designed for Inspira app.
+
+![Not found](/src/assets/readme_images/not-found.png)
+
 
 ## Future Features
+
+### Restricting Future Completion Dates
+In the future the app will not allow the users to choose future completion date. This will make the users to share more accurate data in the app. It is important for other users to know when the project was completed to be able to follow the latest trends in design and art.
+
+### Validating Locations Input
+The app will have a feature to validate the location to avoid false data in app. It will also have a possibility for other users to ckick on location and see where the person is from in case the name of the city is not recognized. 
+
+It will help professionals to find likeminded collegues as well as be able to see the completed projects when they travel.
+
+### Upload Multiple Pictures for a Single Post
+As a designer or architect they usually want to share more then one picture of the project as the projects are usually big and can not been shown with one post. The feautre will be added in the future
+
+### Keep Picture During Post Edit
+In the project there is a problem with editing the post as the post is not possible to change and keep the same picture unless we don't reupload it. This can be a bad user experience. The bug will be fixed in the future.
+
+### Pinning Posts for Inspiration
+Usually designers and architects want to be able to like and pin posts for future inspirations. In the future this function will be devided in two buttons and funtions. Like will only handle one action, to like a project while pin will save the post for the future as not every post which we like we use for the future inspiration. It will also have a possibility to create folders to keep different projects't inspirations to make user experience better.
 
 # Technologies Used
 
@@ -206,12 +247,12 @@ Choosing date does not work in create post form - The problem was that i was upd
 
 Can not change the profile page - fixed
 
-It logs in after refreshing the page - 
+It logs in after refreshing the page - it has been fixed. The link in log out form was wrong in backend.
 
 Chosen profile does not show in profile image - It has been fixed by changing src attribute in profile image.
 ![Debug profile picture](/src/assets/readme_images/debug-profile-image.png)
 
-It does not show that the picture has been changed but it changes in profile edit form - 
+It does not show that the picture has been changed but it changes in profile edit form - It had been fixed by changing variable. Instead of image should have been avatar.
 
 The profile picture did not appear in NavBar, next to the comments or posts - Fixed
 
@@ -236,6 +277,8 @@ It has been changed to
 ![Debug 4](/src/assets/readme_images/debug-profile-pic3.png)
 
 The profile picture is not updating on the right corner if I don't refresh the page - 
+
+When I click on follow button it does not update at once - 
 
 ## Bugs Unresolved
 
