@@ -69,11 +69,15 @@ export const ProfileDataProvider = ({ children }) => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(
-          "/profiles/?ordering=-followers_count"
+          "/profiles/?ordering=-post_count"
         );
+        const filteredProfiles = data.results.filter(
+          (profile) => profile.id !== currentUser?.profile_id
+        );
+
         setProfileData((prevState) => ({
           ...prevState,
-          popularProfiles: data,
+          popularProfiles: { ...data, results: filteredProfiles },
         }));
       } catch (err) {
         // console.log(err);
