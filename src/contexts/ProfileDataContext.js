@@ -69,7 +69,7 @@ export const ProfileDataProvider = ({ children }) => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(
-          "/profiles/?ordering=-post_count"
+          "/profiles/?ordering=-posts_count"
         );
         const filteredProfiles = data.results.filter(
           (profile) => profile.id !== currentUser?.profile_id

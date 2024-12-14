@@ -8,6 +8,8 @@ Find live API here - [Inspira API](https://inspira-api-bc9117602418.herokuapp.co
 
 Find API Repository here - [API repository](https://github.com/asyaharoyan/api-inspira)
 
+![Inspira](src/assets/readme_images/inspira.png)
+
 
 # Contents
 - [**User Experience UX**](#user-experience-ux)
@@ -67,6 +69,8 @@ Find API Repository here - [API repository](https://github.com/asyaharoyan/api-i
 - Allow users to create and manage profiles, track their work, and control the visibility of their posts and projects.
 
 ## User Stories
+
+See all the user stories [here](https://github.com/users/asyaharoyan/projects/7/views/1).
 
 ## Design Prototype
 
@@ -145,38 +149,157 @@ A logged in user will have access to the following
   For not logged in users it shows following menu
 
   - Home
+  - Info
   - Sign In
   - Sign Up
+
+![Nav Bar bigger scrrens](src/assets/readme_images/navbar-big-so.png)
+
+![Nav Bar bigger scrrens](src/assets/readme_images/navbar-small-so.png)
 
   If the user is logged in, they will see the following drop-down menu
 
   - Home
-  - News Feed
+  - Info
   - Liked
   - Sign out
   - Avatar
 
+![Nav Bar bigger scrrens](src/assets/readme_images/navbar-big.png)
+
+![Nav Bar bigger scrrens](src/assets/readme_images/navbar-small.png)
+
 ### Search bar
+
+The search bar is a core feature of the platform, available to both logged-in and logged-out users. Its design prioritizes ease of use and a seamless user experience.
+
+Users can search for a wide range of content, including:
+- Names (e.g., profile or project names).
+- Styles (e.g., modern, industrial).
+- Areas (e.g., geographic locations or types of spaces).
+- Area Names (e.g., specific rooms or landmarks).
+- Keywords (e.g., matching text in project descriptions or tags).
+
+As the user types, the search bar provides real-time suggestions and displays matching results instantly.
+This eliminates the need for users to click "Enter" or a search icon, offering a faster and more intuitive experience.
+
+![Search](src/assets/readme_images/search.png)
 
 ### Posts card
 
+The Post Card component is a reusable, dynamic feature designed to display posts consistently and engagingly across the platform. Posts are fetched via infinite scrolling, providing a seamless browsing experience without the need for pagination.
+
+It includes the author, post date, location, completion date, style, area type, post name, content snippet, likes, and comments.
+
+Users can like posts, comment, and engage directly from the card.
+
+Adapts to different screen sizes and dynamically renders posts for smooth scrolling, even with extensive content.
+
+Infinite scrolling ensures uninterrupted exploration of content.
+Clean and intuitive layout highlights key details while encouraging interaction.
+
+![Posts card](src/assets/readme_images/posts-card.png)
+
 ### Create post page
+
+The Create Post page allows users to share their projects by uploading a picture, adding a title, and selecting key details like style, area type, location, completion date, and content.
+
+Users cannot create a post without a title, style, or picture, ensuring quality and discoverability. This page fosters creativity and community engagement by making posts informative, searchable, and inspiring.
+
+It is responsive for mobile phones and bigger screens.
+
+![Create post](src/assets/readme_images/create-post.png)
+
+![Create post](src/assets/readme_images/create-post-phone.png)
 
 ### Post page
 
+The Post Page displays all the details of a post, including comments and likes. If the user is the post owner, a menu icon with three dots allows access to additional actions.
+
+![Post page](src/assets/readme_images/post-page.png)
+
+- Edit Post: Redirects the user to a responsive edit form where they can update any aspect of the post's details. Changes can be saved or canceled.
+
+![Post edit page](src/assets/readme_images/post-edit.png)
+
+![Post page](src/assets/readme_images/post-edit-phone.png)
+
+- Delete Post: Opens a confirmation pop-up window to ensure intentional deletion.
+This setup provides a streamlined and user-friendly experience, with responsive design ensuring accessibility across devices.
+
+![Post page](src/assets/readme_images/post-delete.png)
+
 ### Most Active Profiles
+
+The Most Active Profiles section highlights users with the highest number of posts. On larger screens, it appears in the right corner, displaying the profile picture, user name, and a follow button for each profile.
+
+On mobile devices, this section is integrated into the search bar, prioritizing space efficiency by hiding the follow buttons while still showing the profile picture and user name. This ensures a seamless and responsive user experience across all screen sizes.
+
+![Most Active Profiles](src/assets/readme_images/active-profiles.png)
+
+![Most Active Profiles](src/assets/readme_images/active-profiles-phone.png)
 
 ### Sign in/ Sign up
 
+The Sign In form allows users to log in by providing their username and password. If the credentials are incorrect, a clear error message notifies the user.
+
+The Sign Up form requires users to input a username, password, confirm their password, and select a profession. This emphasizes that the platform is tailored for specific professionals, discouraging random sign-ups.
+
+Both forms feature an accompanying image, enhancing the visual appeal. On smaller screens, the image is hidden to maintain a clean and responsive design.
+
+![Sign in/ Sign up](src/assets/readme_images/signin.png)
+
+![Sign in/ Sign up](src/assets/readme_images/signin-phone.png)
+
+![Sign in/ Sign up](src/assets/readme_images/signup.png)
+
+![Sign in/ Sign up](src/assets/readme_images/signup-phone.png)
+
 ### Informative info page for terms and conditions
 
-### Like page
+The Info Page provides users with essential details about the platform, including how it works and guidelines for using the website. It includes the Terms and Conditions, which outline the platform's rules and user expectations. While the terms are currently general due to time constraints, they will be refined to be more specific and professional in the future. This ensures that users fully understand the platform's usage policies before signing up.
+
+![info page](src/assets/readme_images/info.png)
+
+### Liked page
+
+The Liked Page collects all the posts that a user has liked, making it easy to revisit them later without needing to search or scroll through the platform again. This feature serves as a personal collection of posts for future reference. In the future, the page will be enhanced with a PIN function, allowing users to pin posts that are important for future interactions. This will help distinguish between posts that are mere likes and those that are crucial for ongoing inspiration or projects, ensuring a more organized and efficient user experience.
+
+![Liked page](src/assets/readme_images/liked-page.png)
 
 ### Profile page
 
+The Profile Page is accessible only to logged-in users and displays personal details such as the user’s location, years of experience, website, profession, bio, full name, and profile picture. This information is fully editable.
+
+If the user owns the profile, a three-dot menu appears in the top-right corner, providing options to change the password, username, and profile details. Users can upload a custom profile picture, or the platform will use a default one if none is provided. While the profession is a required field, other details such as bio and location are optional, allowing users to personalize their profile as they wish.
+
+![Profile page](src/assets/readme_images/profile-page.png)
+
+![Profile choice](src/assets/readme_images/profile-edit-choices.png)
+
+Password Edit
+
+![Password Edit](src/assets/readme_images/password-edit.png)
+
+Username Edit
+
+![Username Edit](src/assets/readme_images/username-edit.png)
+
+Profile edit
+
+![Profile edit](src/assets/readme_images/profile-edit.png)
+
+Profile edit phone
+
+![Profile edit phones](src/assets/readme_images/profile-edit-phone.png)
+
 ### Comment / Like
 
+![Comment / Like](src/assets/readme_images/comment-like.png)
+
 ### Notifications
+
+![Notifications](src/assets/readme_images/posts-card.png)
 
 ### Not found
 The page has been designed to show a clear information to the user. It is custom designed for Inspira app.
