@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
@@ -14,25 +14,10 @@ const SignUpForm = () => {
         username: "",
         password1: "",
         password2: "",
-        profession: "",
       });
-    const { username, password1, password2, profession } = signUpData;
-    const [professions, setProfessions] = useState([]);
+    const { username, password1, password2 } = signUpData;
     const history = useHistory();
     const [errors, setErrors] = useState({});
-
-    useEffect(() => {
-      const fetchProfessions = async () => {
-        try {
-          const { data } = await axios.get("/profiles/professions/");
-          setProfessions(data);
-        } catch (err) {
-          console.error("Error fetching professions:", err);
-        }
-      };
-  
-      fetchProfessions();
-    }, []);
 
     const handleChange = (event) => {
       const { name, value } = event.target;
@@ -40,18 +25,6 @@ const SignUpForm = () => {
         ...prevState,
         [name]: value,
       }));
-    
-      if (name === "profession" && !professions.includes(value)) {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          profession: ["Please select a valid profession."],
-        }));
-      } else if (name === "profession") {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          profession: undefined,
-        }));
-      }
     };
 
     const handleSubmit = async (event) => {
@@ -131,29 +104,6 @@ const SignUpForm = () => {
     {message}
   </Alert>
 )}
-
-<Form.Group as={Row} controlId="profession">
-              <Form.Label className="d-none">Profession</Form.Label>
-              <Form.Control
-                as="select"
-                className={styles.Input}
-                name="profession"
-                value={profession}
-                onChange={handleChange}
-              >
-                <option value="">Choose your profession</option>
-                {professions.map((prof, idx) => (
-                  <option key={idx} value={prof}>
-                    {prof}
-                  </option>
-                ))}
-              </Form.Control>
-            </Form.Group>
-            {errors.profession?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
 
   <Button
   className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}

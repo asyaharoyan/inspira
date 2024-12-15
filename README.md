@@ -295,7 +295,19 @@ Profile edit phone
 
 ### Comment / Like
 
+Logged-in users can interact with posts by liking or commenting. When a post is liked, the heart icon appears filled, indicating a like, while an unliked post shows an empty heart shape. Users can toggle their like by clicking the heart again to dislike the post.
+
+Clicking on a post redirects the user to its dedicated page, where they can view all comments and add their own. If the user is the owner of a comment, three dots will appear, allowing them to edit or delete the comment.
+
+When the user chooses to delete, a confirmation popup will appear to verify the action. If the user opts to edit, they can modify the comment and either save the changes or cancel the edit.
+
 ![Comment / Like](src/assets/readme_images/comment-like.png)
+
+![Comment owner](src/assets/readme_images/comment-page.png)
+
+![Comment edit](src/assets/readme_images/comment-edit.png)
+
+![Comment edit](src/assets/readme_images/comment-delete.png)
 
 ### Notifications
 
