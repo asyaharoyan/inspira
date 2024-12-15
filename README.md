@@ -347,6 +347,13 @@ Create post form
 Post Edit form
 ![Notifications](src/assets/readme_images/post-edit-not.png)
 
+**Other feedbacks**
+![Notifications](src/assets/readme_images/comment-no-loggedin.png)
+![Notifications](src/assets/readme_images/like-own-post.png)
+![Notifications](src/assets/readme_images/not-loggedin.png)
+![Notifications](src/assets/readme_images/profile-info-not-loggedin.png)
+
+
 ### Not found
 The page has been designed to show a clear information to the user. It is custom designed for Inspira app.
 
@@ -409,7 +416,47 @@ By implementing these fields, the signup process will help identify qualified pr
 
 ## Lighthouse Testing
 
-## Accessibility Testing
+The app has been tested on LightHouse. The results will be improved in the future as there is a space to improve the performance of the app.
+
+For mobiles
+- Home page
+![Lighthouse mobile](src/assets/readme_images/lighthouse-mobile.png)
+- Create post
+![Lighthouse mobile](src/assets/readme_images/lighthouse-createpost-mobile.png)
+- Info page
+![Lighthouse mobile](src/assets/readme_images/lighthouse-info-mobile.png)
+- Liked page
+![Lighthouse mobile](src/assets/readme_images/lighthouse-liked-mobile.png)
+- Post Edit page
+![Lighthouse mobile](src/assets/readme_images/lighthouse-postedit-mobile.png)
+- Profile page
+![Lighthouse mobile](src/assets/readme_images/lighthouse-profilepage-mobile.png)
+- Profile edit page
+![Lighthouse mobile](src/assets/readme_images/lighthouse-profileedit-mobile.png)
+- Sign in page
+![Lighthouse mobile](src/assets/readme_images/lighthouse-signin-mobile.png)
+- Sign up page
+![Lighthouse mobile](src/assets/readme_images/lighthouse-signup-mobile.png)
+
+For desktops
+- Home page
+![Lighthouse desktop](src/assets/readme_images/lighthouse-desktop.png)
+- Create post
+![Lighthouse desktop](src/assets/readme_images/lighthouse-createpost-desktop.png)
+- Info page
+![Lighthouse desktop](src/assets/readme_images/lighthouse-info-desktop.png)
+- Liked page
+![Lighthouse desktop](src/assets/readme_images/lighthouse-liked-desktop.png)
+- Post Edit page
+![Lighthouse desktop](src/assets/readme_images/lighthouse-postedit-desktop.png)
+- Profile page
+![Lighthouse desktop](src/assets/readme_images/lighthouse-profilepage-desktop.png)
+- Profile edit page
+![Lighthouse desktop](src/assets/readme_images/lighthouse-profileedit-desktop.png)
+- Sign in page
+![Lighthouse desktop](src/assets/readme_images/lighthouse-signin-desktop.png)
+- Sign up page
+![Lighthouse desktop](src/assets/readme_images/lighthouse-signup-desktop.png)
 
 ## Responsiveness Testing
 
@@ -468,6 +515,8 @@ When I click on follow button it does not update at once -
 ## Bugs Unresolved
 
 Can not let the picture to be the same in post edit form - It forces the user to choose a picture as it removes the old one.
+
+![Debug 4](/src/assets/readme_images/unresolved-bug.png)
 
 # Deployment To Heroku
 
