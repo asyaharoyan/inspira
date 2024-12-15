@@ -113,7 +113,9 @@ The users have different permissions depending on if they are logged in or not.
 A logged out user will have access to the following
 
 - Home Page
-- View other users profiles and posts
+- Info page
+- View other users posts
+- See popular profiles
 - Sign In Page
 - Sign Up Page
 
@@ -123,17 +125,17 @@ A logged in user will have access to the following
 
 - Home Page
 - Sign Out Page
-- News Feed Page
+- Info page
+- Create post
 - Liked Page
 - Comment
 - Edit own profile
 - Edit/delete own comments
 - Change password
-- View other users profiles and posts
+- View other users profiles' details and posts
 - Follow/unfollow users
 - Like posts
 - See popular profiles
-- See information about the user
 
 ## Existing Features
 
@@ -161,6 +163,7 @@ A logged in user will have access to the following
 
   - Home
   - Info
+  - Create post
   - Liked
   - Sign out
   - Avatar
@@ -243,7 +246,7 @@ On mobile devices, this section is integrated into the search bar, prioritizing 
 
 The Sign In form allows users to log in by providing their username and password. If the credentials are incorrect, a clear error message notifies the user.
 
-The Sign Up form requires users to input a username, password, confirm their password, and select a profession. This emphasizes that the platform is tailored for specific professionals, discouraging random sign-ups.
+The Sign Up form requires users to input a username, password and confirm their password. 
 
 Both forms feature an accompanying image, enhancing the visual appeal. On smaller screens, the image is hidden to maintain a clean and responsive design.
 
@@ -309,9 +312,40 @@ When the user chooses to delete, a confirmation popup will appear to verify the 
 
 ![Comment edit](src/assets/readme_images/comment-delete.png)
 
-### Notifications
+### Feedback and Validation Across Forms
 
-![Notifications](src/assets/readme_images/posts-card.png)
+The platform is designed with a user-centric approach, ensuring clear feedback and validation across all forms to enhance the user experience and maintain a high standard of professionalism.
+
+**Sign-Up Form**
+- Includes fields for username, password, and repeat password.
+- Feedback ensures passwords are at least 8 characters, not too common, and match.
+
+![Notifications](src/assets/readme_images/signup-not1.png)
+![Notifications](src/assets/readme_images/signup-not2.png)
+![Notifications](src/assets/readme_images/signup-not3.png)
+
+**Sign-In Form**
+- Includes fields for username and password.
+- Feedback ensures that there is a user with provided credentials, otherwise gives a clear feedback
+
+![Notifications](src/assets/readme_images/signin-not.png)
+
+**Profile Edit Form**
+- Profession defaults to "Architect" when creating a new profile and if in edit form no profession has been chosen, it changes back to the last choice.
+This feature will be improved to require user input in sign up form in the future.
+
+The years of experiense can not be a negative number.
+
+![Notifications](src/assets/readme_images/profile-edit-not.png)
+
+**Create and Edit Post Form**
+- Requires a title, style, and picture. Users receive immediate feedback for missing fields or empty posts.
+
+Create post form
+![Notifications](src/assets/readme_images/post-create-not.png)
+
+Post Edit form
+![Notifications](src/assets/readme_images/post-edit-not.png)
 
 ### Not found
 The page has been designed to show a clear information to the user. It is custom designed for Inspira app.
@@ -337,6 +371,22 @@ In the project there is a problem with editing the post as the post is not possi
 
 ### Pinning Posts for Inspiration
 Usually designers and architects want to be able to like and pin posts for future inspirations. In the future this function will be devided in two buttons and funtions. Like will only handle one action, to like a project while pin will save the post for the future as not every post which we like we use for the future inspiration. It will also have a possibility to create folders to keep different projects't inspirations to make user experience better.
+
+### Future Improvements for Signup Form
+The upcoming improvements to the signup form will enhance user registration by ensuring that the platform attracts only relevant professionals. Here's a breakdown of the changes:
+
+**Required Fields:**
+Profession: This will be a required field, ensuring that users identify themselves as professionals in a specific field. By making this a compulsory field, it sets a clear tone that the platform is for industry professionals and not for random sign-ups.
+
+Name and Surname: The user will be required to enter both their first and last name. This adds credibility and creates a more professional environment from the start.
+
+**Optional Fields:**
+Website: Users will have the option to provide a personal or business website, which will help build their profile and provide more context about their work.
+Location: While not mandatory, users can choose to add their location. This could foster a more personalized experience, helping users connect with others in their region or field.
+
+Experience: An optional field that lets users add details about their professional experience. This can serve to further highlight their expertise and qualifications.
+
+By implementing these fields, the signup process will help identify qualified professionals while also allowing users the flexibility to showcase additional details. These changes will create a more curated and professional environment, increasing the platform's appeal to its target audience.
 
 # Technologies Used
 
