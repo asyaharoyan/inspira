@@ -460,7 +460,179 @@ For desktops
 
 ## Responsiveness Testing
 
+The app has been tested on:
+- Larger screens 1200px and more
+- Tablets like iPad mini, iPad Air, Surface Pro
+- Phones such as Xiaomi mi 11, Oneplus 12, iPhone 12 Pro, Pixel 7, Samsung Galaxi S8+
+
+## Code Validation
+
 ## Manual Testing Pages
+
+### Navigation Bar
+- The logo is displayed on the left side of the navigation bar.
+- The Create Post button appears next to the logo when the user is logged in.
+- On the right side of the screen, Home, Info, Liked, Sign Out, and the user avatar are rendered next to each other.
+- For smaller screens, the menu is collapsed into a burger icon for better accessibility.
+- The Create Post button disappears when the user is logged out.
+- Liked and Sign Out options, as well as the user avatar, are hidden for logged-out users.
+- Sign In and Sign Up options are displayed in the navigation bar when the user is logged out.
+
+### Home Page
+- The navigation bar is displayed at the top of the page.
+- A search bar is available for easy access.
+- The most active profiles are shown on the right side of larger screens and below the navigation bar on smaller screens.
+- Follow/Unfollow buttons are displayed next to the name of the most active profiles for logged-in users on larger screens.
+- The profile pictures and names of the most active profiles are rendered as expected.
+- Profiles with the most posts are rendered in descending order, with the profile having the most posts displayed first.
+- Infinite scrolling works as expected, loading content seamlessly.
+- The posts are displayed in reverse order, with the most recent posts shown first.
+
+### Info Page
+- The Info page displays all relevant content.
+
+### Liked Page
+- The page shows all posts that the user has liked.
+- Posts are rendered as expected in a card format.
+- The posts are displayed in reverse order, with the most recent liked posts shown first.
+
+### Create Post
+- The post creation form is displayed correctly.
+- The photo upload area is rendered as expected.
+- A drop-down menu for selecting style and area type is available.
+
+### Profile Page
+- The profile picture is displayed correctly.
+- The bio appears to the right of the profile picture.
+- Additional information such as followers, following, profession, experience, website, and location is shown beneath the profile picture, aligned horizontally.
+- Empty fields in the user's profile are displayed as expected, with "--".
+- The user's posts are displayed properly.
+- A three-dot menu appears if the user is the profile owner.
+- Follow/Unfollow button is rendered as expected.
+- Profile information is not rendered for logged out users. Instead a link is available to sign in
+
+### Profile Edit Page
+- The profile edit form is displayed on the right for desktops and below the picture for smaller screens.
+- A drop-down menu for selecting professions is available.
+- The profile picture is displayed on the left for desktops and at the top for smaller screens.
+- A button to change the profile picture is present.
+- Confirm and cancel buttons are visible and functional.
+- Edit password and username forms are displayed as expected.
+
+### Sign In Page
+- The sign-in form for username and password is displayed correctly.
+- The sign-in button is rendering as expected.
+- A message with a link to the sign-up page is displayed under the form.
+- A picture appears next to the sign-in form on larger screens, disappearing on smaller screens for a cleaner design.
+
+### Sign Up Page
+- The sign-up form for username, password and confirming password form is displayed correctly.
+- The sign-up button is rendering as expected.
+- A message with a link to the sign-in page is displayed under the form.
+- A picture appears next to the sign-up form on larger screens, disappearing on smaller screens for a cleaner design.
+
+## Manual Testing Features
+
+### Navigation
+- Clicking the logo redirects the user to the `/home` page.
+- The Home, Info, Sign In, Sign Up, and Liked links redirect the user to their respective pages: `/home`, `/info`, `/liked`, `/signin`, and `/signup`.
+- Clicking on the avatar redirects the user to their profile page.
+- Clicking on Create Post redirects the user to `/posts/create` page
+- Logged-out users cannot see the Liked, Sign In, or Sign Up options in the navigation bar.
+- Logged-out users do not see the Avatar in the right corner of the navigation bar.
+- On smaller screens, the navigation bar is converted into a burger menu, which opens when the user taps on it.
+- The burger menu automatically closes when the user selects an option or taps outside of the menu.
+- Sign Out button sign out the user from the page.
+
+### Home Page
+- The Search Posts bar is functioning as expected, fetching data based on the user's name, matching words, style, and more.
+- Clicking on the post card image redirects the user to the `/posts/id` page for the selected post.
+- Clicking on the avatar of the user who made the post redirects the user to the `/profiles/id` page.
+- When hovering over the heart or comment icon, their shape and color change to indicate interactivity.
+- Clicking the heart icon likes the post, adds it to the Liked page, changes the icon's color, and increases the like count.
+- Clicking the comment icon redirects the user to the `/posts/id` page, where they can leave a comment if logged in.
+- If a user is not logged in and tries to like a post, a clear message appears: "Log in to like posts."
+- If a user is not logged in and clicks on the comment button, an information message appears with a link to redirect the user to the sign-in page.
+- Mos Active Profiles appears for everyone and clicking on their avatar redirects the user to their profile page
+- Logged in users can follow or unfollow the most active profiles with a button appearing next to the profile for bigger screens.
+- The button updates depending on if the logged in user is following or not following the user.
+
+### Sign In page
+- The form provides clear feedback to users who attempt to sign in with non-existing or incorrect credentials.
+- The Sign Up link works as expected, redirecting the user to the `/signup` page.
+- Sign Up button redirects the user to the Home page.
+
+### Sign Up page
+- The form provides clear feedback to users who attempt to sign up with short, non matching or empty passwords. It provides feedback if the password is too common, shorter then
+8 characters.
+- If the passwords do not match the form provides clear feedback.
+- The Sign In link works as expected, redirecting the user to the `/signin` page.
+- Sign Up button redirects the user to Sign In page.
+
+### Liked page
+- Unlked post is removed from Liked Page after refreshing as expected.
+- The user can click on the post and redirect to the post page.
+
+### Create Post page
+- When clicked on the upload picture on the left side of the screen, a window is opened to choose a picture.
+- If the picture is larger then 2MB, a clear feedback is appeared.
+- The user can not leave the title, the style and the image fieled empty as expected.
+- The drop-down menu fetches the data from the backed for styles and area types.
+- The user can choose a date from the calendar
+- Cancel button redirects the user to the previous page.
+- Create button redirects the user to the post page.
+
+### Profile Page
+- The 3 dots open a menu to navigate to Edit Profile, Username, and Password pages.  
+- Clicking on any of these options redirects the user to the respective page.  
+- The website link in the profile is clickable and opens in a new window as expected.  
+- Clicking on post cards redirects the user to the `/posts` page, displaying more details about the selected post.
+
+### Profile Edit Page  
+- In the Edit Username form, the user can change the username and confirm it.  
+- In the Edit Password form, the user needs to write and confirm the new password.  
+- The Cancel and Save buttons always redirect the user to the profile page.  
+- Clicking on the Cancel button ensures no changes are made.  
+- Clicking on the Save button applies all the changes.  
+- In the Edit Profile form:  
+  - The current profile picture is displayed with a button to upload a new one.  
+  - Clicking the button opens a window to select a new picture.  
+  - If the picture exceeds 2MB, a message appears.  
+- The Years of Experience field does not accept negative values.  
+- The Website field does not allow invalid URLs.
+
+### Post Page
+- It renders real time date on the right corner of the post
+- If the user owns the post, 3 dots appear as expected.  
+- Clicking on the dots opens a menu with options to Edit or Delete the post.  
+- Clicking on the Delete button displays a confirmation form.  
+  - Confirming the deletion removes the post and redirects the user to the Home page.  
+  - Clicking on the Cancel button keeps the user on the same page.  
+- Clicking on the Edit button redirects the user to the `/posts/id/edit` page.  
+- Logged-in users can access a form to leave a comment.  
+- Logged-in users can also like or unlike the post.
+
+### Post Edit Page  
+- The Post Edit page allows the user to update the Title, Style, Area Type, Location, Completion Date, and Content, as well as remove or add information.  
+- The user cannot save the post if the Style or Title fields are empty.  
+- The Style and Area Type fields open drop-down menus, with data fetched from the backend to display available options.
+
+### Like  
+- The heart icon changes color when hovered over.  
+- A message is displayed for logged-in users attempting to like their own posts, informing them that this action is not allowed.  
+- A message appears for users who are not signed in, prompting them to sign in to like posts.  
+- The heart icon becomes full when a user likes a post and returns to an empty state when the user unlikes the post.  
+- The number next to the heart icon updates accordingly to reflect the current number of likes.
+
+### Comment  
+- Clicking on the comment icon redirects the user to the `/posts/id` page.  
+- Logged-in users can leave a comment.
+- Comment owners see 3 dots next to their comments, providing options to Edit or Delete the comment.
+  - Clicking on the Delete button shows a pop-up menu to confirm the deletion.
+  - Clicking on Edit allows the user to modify the comment and confirm the changes.
+  - Clicking on Cancel redirects the user back without making changes.
+- Non-logged-in users cannot leave comments and instead see a link to Sign In.
+  - The link redirects the user to the `/signin` page.
 
 ## Browser Compatibility
 
@@ -508,15 +680,17 @@ It has been changed to
 
 ![Debug 4](/src/assets/readme_images/debug-profile-pic3.png)
 
-The profile picture is not updating on the right corner if I don't refresh the page - 
+The profile picture is not updating on the right corner if I don't refresh the page - fixed by editind ProfileDataContext.js file.
 
-When I click on follow button it does not update at once - 
+When I click on follow button it does not update at once - fixed by editing PopularProfiles.js file.
 
 ## Bugs Unresolved
 
 Can not let the picture to be the same in post edit form - It forces the user to choose a picture as it removes the old one.
 
 ![Debug 4](/src/assets/readme_images/unresolved-bug.png)
+
+there are more!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 # Deployment To Heroku
 
