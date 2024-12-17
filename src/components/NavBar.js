@@ -51,7 +51,9 @@ const NavBar = () => {
       >
         <i className="fa-regular fa-thumbs-up"></i>Liked
       </NavLink>
-      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+      <NavLink className={styles.NavLink}
+      to="/" onClick={handleSignOut}
+      aria-label="sign-out">
         <i className="fa-solid fa-arrow-right-from-bracket"></i>Sign out
       </NavLink>
       <NavLink

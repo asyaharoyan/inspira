@@ -342,12 +342,15 @@ The years of experiense can not be a negative number.
 - Requires a title, style, and picture. Users receive immediate feedback for missing fields or empty posts.
 
 Create post form
+
 ![Notifications](src/assets/readme_images/post-create-not.png)
 
 Post Edit form
+
 ![Notifications](src/assets/readme_images/post-edit-not.png)
 
 **Other feedbacks**
+
 ![Notifications](src/assets/readme_images/comment-no-loggedin.png)
 ![Notifications](src/assets/readme_images/like-own-post.png)
 ![Notifications](src/assets/readme_images/not-loggedin.png)
@@ -400,8 +403,8 @@ By implementing these fields, the signup process will help identify qualified pr
 ## Languages
 
 - [JavaScript](https://www.javascript.com/) - A dynamic programming language that's used for web development
-- [HTML5](https://en.wikipedia.org/wiki/HTML5) - A markup language used for structuring and presenting content
-- [CSS3](https://en.wikipedia.org/wiki/CSS) - A style sheet language used for describing the presentation of a document
+- [HTML](https://en.wikipedia.org/wiki/HTML5) - A markup language used for structuring and presenting content
+- [CSS](https://en.wikipedia.org/wiki/CSS) - A style sheet language used for describing the presentation of a document
 
 ## Libraries and Frameworks
 
@@ -420,50 +423,134 @@ The app has been tested on LightHouse. The results will be improved in the futur
 
 For mobiles
 - Home page
+
 ![Lighthouse mobile](src/assets/readme_images/lighthouse-mobile.png)
+
 - Create post
+
 ![Lighthouse mobile](src/assets/readme_images/lighthouse-createpost-mobile.png)
+
 - Info page
+
 ![Lighthouse mobile](src/assets/readme_images/lighthouse-info-mobile.png)
+
 - Liked page
+
 ![Lighthouse mobile](src/assets/readme_images/lighthouse-liked-mobile.png)
+
 - Post Edit page
+
 ![Lighthouse mobile](src/assets/readme_images/lighthouse-postedit-mobile.png)
+
 - Profile page
+
 ![Lighthouse mobile](src/assets/readme_images/lighthouse-profilepage-mobile.png)
+
 - Profile edit page
+
 ![Lighthouse mobile](src/assets/readme_images/lighthouse-profileedit-mobile.png)
+
 - Sign in page
+
 ![Lighthouse mobile](src/assets/readme_images/lighthouse-signin-mobile.png)
+
 - Sign up page
+
 ![Lighthouse mobile](src/assets/readme_images/lighthouse-signup-mobile.png)
 
 For desktops
+
 - Home page
+
 ![Lighthouse desktop](src/assets/readme_images/lighthouse-desktop.png)
+
 - Create post
+
 ![Lighthouse desktop](src/assets/readme_images/lighthouse-createpost-desktop.png)
+
 - Info page
+
 ![Lighthouse desktop](src/assets/readme_images/lighthouse-info-desktop.png)
+
 - Liked page
+
 ![Lighthouse desktop](src/assets/readme_images/lighthouse-liked-desktop.png)
+
 - Post Edit page
+
 ![Lighthouse desktop](src/assets/readme_images/lighthouse-postedit-desktop.png)
+
 - Profile page
+
 ![Lighthouse desktop](src/assets/readme_images/lighthouse-profilepage-desktop.png)
+
 - Profile edit page
+
 ![Lighthouse desktop](src/assets/readme_images/lighthouse-profileedit-desktop.png)
+
 - Sign in page
+
 ![Lighthouse desktop](src/assets/readme_images/lighthouse-signin-desktop.png)
+
 - Sign up page
+
 ![Lighthouse desktop](src/assets/readme_images/lighthouse-signup-desktop.png)
 
 ## Responsiveness Testing
 
 The app has been tested on:
+
 - Larger screens 1200px and more
-- Tablets like iPad mini, iPad Air, Surface Pro
-- Phones such as Xiaomi mi 11, Oneplus 12, iPhone 12 Pro, Pixel 7, Samsung Galaxi S8+
+
+![Larger screens](src/assets/readme_images/screen-1200px.png)
+
+- Tablets
+
+iPad mini
+
+![Larger screens](src/assets/readme_images/ipad-mini.png)
+
+iPad Air
+
+![Larger screens](src/assets/readme_images/ipad-air.png)
+
+iPad Pro
+
+![Larger screens](src/assets/readme_images/ipad-pro.png)
+
+Surface Duo
+
+![Larger screens](src/assets/readme_images/surface-duo.png)
+
+Surface Pro
+
+![Larger screens](src/assets/readme_images/surface-pro.png)
+
+- Phones
+
+iPhone 12 Pro
+
+![Larger screens](src/assets/readme_images/iphone-12pro.png)
+
+iPhone 14 Pro
+
+![Larger screens](src/assets/readme_images/iphone14pro.png)
+
+iPhone XR
+
+![Larger screens](src/assets/readme_images/iphone-xr.png)
+
+Pixel 7
+
+![Larger screens](src/assets/readme_images/pixel7.png)
+
+Samsung Galaxi S8+
+
+![Larger screens](src/assets/readme_images/samsung-galaxy-s8+.png)
+
+Samsung Galaxi S20 Ultra
+
+![Larger screens](src/assets/readme_images/samsung-galaxy-s20ultra.png)
 
 ## Code Validation
 
@@ -686,11 +773,27 @@ When I click on follow button it does not update at once - fixed by editing Popu
 
 ## Bugs Unresolved
 
-Can not let the picture to be the same in post edit form - It forces the user to choose a picture as it removes the old one.
+Can not let the picture to be the same in post edit form. It forces the user to choose a picture as it removes the old one.
 
-![Debug 4](/src/assets/readme_images/unresolved-bug.png)
+![Bug 1](/src/assets/readme_images/unresolved-bug.png)
 
-there are more!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+If the user is not logged in and there is a comment, the link is not present to redirect the user to the sig in page.
+The issue is there because of the logic. It will be resolved in the future.
+
+![Bug 2](/src/assets/readme_images/unresolved-bug3.png)
+
+The popular profiles are not being scrolled with the content. The issue is not a priority and will be resolved in the future development.
+
+![Bug 3](/src/assets/readme_images/unresolved-bug4.png)
+
+If the user is logged out a error message appears in the console. The error will be handled by having a message instead of the error.
+
+![Bug 4](/src/assets/readme_images/unresolved-bug2.png)
+
+Other error messages appearing on the console. The errors were not possible in this stage of development.
+
+![Bug 5](/src/assets/readme_images/unresolved-bug1.png)
+
 
 # Deployment To Heroku
 
