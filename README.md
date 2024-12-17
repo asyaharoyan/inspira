@@ -409,19 +409,32 @@ By implementing these fields, the signup process will help identify qualified pr
 ## Libraries and Frameworks
 
 - [React](https://reactjs.org/) - Advanced front-end JavaScript library for building user interfaces
-- [Bootstrap](https://getbootstrap.com/) - Popular CSS Framework for developing responsive and mobile-first websites
+- [React Bootstrap](https://react-bootstrap.netlify.app/) - Popular CSS Framework for developing responsive and mobile-first websites
 - [Font Awesome](https://fontawesome.com/) - A font and icon toolkit based on CSS
 - [Google Fonts](https://fonts.google.com/) - A library of open source font families and APIs for convenient use via CSS
+
+## Other Tools
+
+- [Favicon](https://favicon.io/) - Used to create the favicon.
+- [GitPod](https://www.gitpod.io/) - Used to create and edit the website.
+- [GitHub](https://github.com/) - Used to host and deploy the website as well as manage the project.
+- [Google Chrome DevTools](https://developer.chrome.com/docs/devtools/) - Used to test responsiveness and debug.
+- [Figma](https://www.figma.com/) - Used to create mock-up designs.
+- [Corel Draw](https://www.coreldraw.com/en/) - Used to create images and remove backgrounds where needed.
+- [Heroku](https://dashboard.heroku.com) - Used to deploy the website
 
 # Testing
 
 ## Code Validation
+
+![JSX Compiler](src/assets/readme_images/valid-code.png)
 
 ## Lighthouse Testing
 
 The app has been tested on LightHouse. The results will be improved in the future as there is a space to improve the performance of the app.
 
 For mobiles
+
 - Home page
 
 ![Lighthouse mobile](src/assets/readme_images/lighthouse-mobile.png)
@@ -790,9 +803,11 @@ If the user is logged out a error message appears in the console. The error will
 
 ![Bug 4](/src/assets/readme_images/unresolved-bug2.png)
 
-Other error messages appearing on the console. The errors were not possible in this stage of development.
+Other error messages appearing. The errors were not possible in this stage of development.
 
 ![Bug 5](/src/assets/readme_images/unresolved-bug1.png)
+
+![Bug 6](/src/assets/readme_images/unresolved-bug5.png)
 
 
 # Deployment To Heroku
@@ -837,7 +852,7 @@ Finally click **Deploy Branch** and wait for it to build
 
 This project was inspired by the [Code Institute](https://codeinstitute.net/) walk-through **Moments** project and has been modified to serve the purpose of the **Inspira** project.
 
-Many of the files had been copied from the **Moments** walkthrough and modified accordingly as the time is short and not possible to recreate everything from the scratch. 
+Many of the files had been copied from the **Moments** walkthrough and modified accordingly as the time is short and not possible to recreate everything from the scratch.
 
 ### Media
 
@@ -846,4 +861,9 @@ All the pictures which has been shared are my own projects.
 The logo of the application has been designed by me using **CorelDraw**
 
 Default profile pictures had been downloaded from **Google** and has been used only for educational purposes.
+
+### Acknowledgments
+
+The project was extremely challenging and I would not be able to finish it without the support I recieved from my mentor **Julia Konovalova**,
+the tutors who helped me to debug my project when needed, **Code Institute** walkthrough and the Slack community.
 
