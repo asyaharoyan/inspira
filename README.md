@@ -124,7 +124,7 @@ A logged out user will have access to the following
 A logged in user will have access to the following
 
 - Home Page
-- Sign Out Page
+- Sign Out Button
 - Info page
 - Create post
 - Liked Page
@@ -431,7 +431,7 @@ By implementing these fields, the signup process will help identify qualified pr
 
 ## Lighthouse Testing
 
-The app has been tested on LightHouse. The results will be improved in the future as there is a space to improve the performance of the app.
+The app has been tested on LightHouse. The results will be improved in the future as there is a space to improve the performance and the accessibility of the app.
 
 For mobiles
 
@@ -495,7 +495,7 @@ For desktops
 
 - Profile page
 
-![Lighthouse desktop](src/assets/readme_images/lighthouse-profilepage-desktop.png)
+![Lighthouse desktop](src/assets/readme_images/lighthouse-profileage-desktop.png)
 
 - Profile edit page
 
@@ -597,7 +597,7 @@ CurrentUserContext.js
 
 InfoPage.js
 
-![Validation](src/assets/readme_images/info.png)
+![Validation](src/assets/readme_images/infojs.png)
 
 MoreDropdown.js
 
@@ -681,6 +681,8 @@ UserPasswordForm.js
 
 ## Manual Testing Pages
 
+All the manual testing for the pages passed without issues.
+
 ### Navigation Bar
 - The logo is displayed on the left side of the navigation bar.
 - The Create Post button appears next to the logo when the user is logged in.
@@ -744,6 +746,8 @@ UserPasswordForm.js
 - A picture appears next to the sign-up form on larger screens, disappearing on smaller screens for a cleaner design.
 
 ## Manual Testing Features
+
+All the manual testing for the features passed without issues.
 
 ### Navigation
 - Clicking the logo redirects the user to the `/home` page.
