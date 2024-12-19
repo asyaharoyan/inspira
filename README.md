@@ -26,10 +26,15 @@ See all the user stories [here](https://github.com/users/asyaharoyan/projects/7/
 
 ## Design Prototype
 
-The user interface and experience (UI/UX) design for Inspira was crafted using [Figma](https://www.figma.com/), ensuring a seamless and visually appealing design that enhances the user's journey throughout the site.
+The user interface and experience (UI/UX) design for **Inspira** was meticulously crafted using [Figma](https://www.figma.com/). This ensured a visually appealing and user-friendly design that enhances the overall journey through the platform.
 
-To view the Figma project, you can visit it [here](https://www.figma.com/design/jsSjnZu2QlOO2bFqOYtyzt/INSPIRA?node-id=0-1&t=0X02r4BdYG0j5pP6-1),
+You can view the Figma project [here](https://www.figma.com/design/jsSjnZu2QlOO2bFqOYtyzt/INSPIRA?node-id=0-1&p=f&t=UxGXWATK7FOPfXGh-0).
 
+While the Figma design served as the foundation, it was not implemented exactly as designed in the app. This is due to the parallel development process where both Figma designs and the app were iteratively improved.
+
+An Agile methodology was adopted for this project. User stories were prioritized based on demand:
+- **High priority**: Features such as user authentication, creating posts, and enabling interactions on the platform were fully implemented.
+- **Medium and low priority**: Some design features and smaller functionalities were not included in this version of the project but may be developed in the future. 
 
 ## Components
 
@@ -377,10 +382,6 @@ By implementing these fields, the signup process will help identify qualified pr
 
 # Testing
 
-## Code Validation
-
-![JSX Compiler](src/assets/readme_images/valid-code.png)
-
 ## Lighthouse Testing
 
 The app has been tested on LightHouse. The results will be improved in the future as there is a space to improve the performance and the accessibility of the app.
@@ -519,9 +520,11 @@ Samsung Galaxi S20 Ultra
 
 ## Code Validation
 
+### JSX
+
 ![Validation](src/assets/readme_images/valid-code.png)
 
-The code has been validated in [ESLint](https://eslint.org/play/).
+The JSX code has been validated in [ESLint](https://eslint.org/play/).
 
 Avatar.js
 
@@ -630,6 +633,13 @@ UsernameForm.js
 UserPasswordForm.js
 
 ![Validation](src/assets/readme_images/userPasswordForm.png)
+
+### CSS
+
+The CSS code has been validated in [W3C CSS Validatior](https://jigsaw.w3.org/css-validator/#validate_by_input).
+The validation returned no errors however there were 4 warnings related the use of vendor-specific pseudo-elements. Because they do not affect functionality, they are not removed from CSS.
+
+![Css validation](src/assets/readme_images/css-warning.png)
 
 ## Manual Testing Pages
 
